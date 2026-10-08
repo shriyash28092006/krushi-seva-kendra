@@ -1,0 +1,2889 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>कृषी सेवा केंद्र व्यवस्थापन प्रणाली</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f1f8f3;
+    color:#243b2a;
+}
+
+header{
+    background:#126b38;
+    color:white;
+    padding:18px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+header h1{
+    font-size:25px;
+}
+
+header p{
+    margin-top:5px;
+    font-size:14px;
+}
+
+.container{
+    display:flex;
+    min-height:calc(100vh - 80px);
+}
+
+.sidebar{
+    width:230px;
+    background:#0b4b29;
+    padding:15px 10px;
+}
+
+.sidebar button{
+    width:100%;
+    border:none;
+    background:transparent;
+    color:white;
+    padding:13px;
+    margin:4px 0;
+    text-align:left;
+    border-radius:7px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.sidebar button:hover,
+.sidebar button.active{
+    background:#2d8b57;
+}
+
+.main{
+    flex:1;
+    padding:25px;
+}
+
+.section{
+    display:none;
+}
+
+.section.active{
+    display:block;
+}
+
+.section-title{
+    margin-bottom:20px;
+}
+
+.section-title h2{
+    color:#126b38;
+    margin-bottom:5px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    border-left:5px solid #2d8b57;
+}
+
+.card h3{
+    color:#666;
+    font-size:14px;
+}
+
+.card p{
+    font-size:26px;
+    font-weight:bold;
+    margin-top:10px;
+    color:#126b38;
+}
+
+.box{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
+
+input,
+select{
+    width:100%;
+    padding:11px;
+    border:1px solid #ccc;
+    border-radius:7px;
+    outline:none;
+}
+
+input:focus,
+select:focus{
+    border-color:#2d8b57;
+}
+
+label{
+    font-weight:bold;
+    display:block;
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+.btn{
+    border:none;
+    padding:9px 14px;
+    border-radius:7px;
+    cursor:pointer;
+    color:white;
+    margin:4px 2px;
+}
+
+.btn:hover{
+    opacity:.85;
+}
+
+.green{
+    background:#126b38;
+}
+
+.blue{
+    background:#1976d2;
+}
+
+.red{
+    background:#d32f2f;
+}
+
+.orange{
+    background:#ef6c00;
+}
+
+.gray{
+    background:#666;
+}
+
+.purple{
+    background:#6a1b9a;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+    min-width:800px;
+}
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+th,
+td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
+}
+
+th{
+    background:#126b38;
+    color:white;
+}
+
+tr:hover{
+    background:#f3f8f4;
+}
+
+.search{
+    max-width:350px;
+    margin-bottom:10px;
+}
+
+.low{
+    color:#d32f2f;
+    font-weight:bold;
+}
+
+.normal{
+    color:#126b38;
+    font-weight:bold;
+}
+
+.warning{
+    background:#fff3cd;
+    padding:12px;
+    border-left:5px solid #ff9800;
+    margin-bottom:15px;
+    border-radius:5px;
+}
+
+.bill{
+    border:2px dashed #126b38;
+    padding:25px;
+    background:white;
+}
+
+.bill h2{
+    text-align:center;
+    color:#126b38;
+}
+
+.total{
+    text-align:right;
+    font-size:22px;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+footer{
+    text-align:center;
+    padding:15px;
+    background:#0b4b29;
+    color:white;
+}
+
+.hidden{
+    display:none;
+}
+
+@media(max-width:700px){
+
+    .container{
+        display:block;
+    }
+
+    .sidebar{
+        width:100%;
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .main{
+        padding:15px;
+    }
+
+    header h1{
+        font-size:20px;
+    }
+}
+
+@media print{
+
+    .sidebar,
+    header,
+    footer,
+    .no-print{
+        display:none !important;
+    }
+
+    .main{
+        padding:0;
+    }
+
+    body{
+        background:white;
+    }
+
+    #sales{
+        display:block !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div>
+<h1>🌾 कृषी सेवा केंद्र व्यवस्थापन प्रणाली</h1>
+<p>Agricultural Products, Stock, Sales & Profit Management</p>
+</div>
+
+<div>
+<b>ADMIN</b>
+</div>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<button class="active" onclick="showSection('dashboard',this)">
+📊 Dashboard
+</button>
+
+<button onclick="showSection('farmers',this)">
+👨‍🌾 Farmers
+</button>
+
+<button onclick="showSection('products',this)">
+🌱 Products
+</button>
+
+<button onclick="showSection('stock',this)">
+📦 Stock
+</button>
+
+<button onclick="showSection('sales',this)">
+🧾 Sales / Billing
+</button>
+
+<button onclick="showSection('suppliers',this)">
+🚚 Suppliers
+</button>
+
+<button onclick="showSection('profit',this)">
+💰 Profit
+</button>
+
+<button onclick="showSection('reports',this)">
+📈 Reports
+</button>
+
+</div>
+
+
+<div class="main">
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section id="dashboard" class="section active">
+
+<div class="section-title">
+
+<h2>📊 Dashboard</h2>
+
+<p>कृषी सेवा केंद्राची संपूर्ण माहिती</p>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card">
+<h3>👨‍🌾 Total Farmers</h3>
+<p id="dashFarmers">0</p>
+</div>
+
+<div class="card">
+<h3>🌱 Total Products</h3>
+<p id="dashProducts">0</p>
+</div>
+
+<div class="card">
+<h3>📦 Total Stock</h3>
+<p id="dashStock">0</p>
+</div>
+
+<div class="card">
+<h3>🧾 Total Sales</h3>
+<p>₹ <span id="dashSales">0</span></p>
+</div>
+
+<div class="card">
+<h3>💰 Total Profit</h3>
+<p>₹ <span id="dashProfit">0</span></p>
+</div>
+
+</div>
+
+
+<div class="box">
+
+<h3>📌 Low Stock Products</h3>
+
+<div id="dashboardLowStock"></div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= FARMERS ================= -->
+
+<section id="farmers" class="section">
+
+<div class="section-title">
+
+<h2>👨‍🌾 Farmer Management</h2>
+
+<p>शेतकऱ्यांची माहिती Add / Edit / Delete करा</p>
+
+</div>
+
+
+<div class="box">
+
+<div class="form-grid">
+
+<div>
+
+<label>शेतकरी नाव</label>
+
+<input
+id="farmerName"
+placeholder="उदा. Ramesh Patil">
+
+</div>
+
+
+<div>
+
+<label>मोबाईल नंबर</label>
+
+<input
+id="farmerMobile"
+placeholder="मोबाईल नंबर">
+
+</div>
+
+
+<div>
+
+<label>गाव</label>
+
+<input
+id="farmerVillage"
+placeholder="गाव">
+
+</div>
+
+
+<div>
+
+<label>जमीन (Acre)</label>
+
+<input
+id="farmerLand"
+type="number"
+placeholder="उदा. 5">
+
+</div>
+
+</div>
+
+
+<br>
+
+<button
+class="btn green"
+id="farmerSaveBtn"
+onclick="saveFarmer()">
+
+➕ Add Farmer
+
+</button>
+
+<button
+class="btn gray"
+onclick="clearFarmerForm()">
+
+Clear
+
+</button>
+
+</div>
+
+
+<div class="box">
+
+<input
+class="search"
+id="farmerSearch"
+onkeyup="displayFarmers()"
+placeholder="🔍 Farmer Search...">
+
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Mobile</th>
+<th>Village</th>
+<th>Land</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="farmerTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section id="products" class="section">
+
+<div class="section-title">
+
+<h2>🌱 Product Management</h2>
+
+<p>तुम्हाला हवा तो कोणताही कृषी Product Add करा</p>
+
+</div>
+
+
+<div class="box">
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Product Name</label>
+
+<input
+id="productName"
+placeholder="उदा. तणनाशक">
+
+</div>
+
+
+<div>
+
+<label>Category</label>
+
+<select id="productCategory">
+
+<option value="">Select Category</option>
+
+<option>बियाणे</option>
+<option>खते</option>
+<option>तणनाशक</option>
+<option>कीटकनाशक</option>
+<option>बुरशीनाशक</option>
+<option>औषध</option>
+<option>शेती उपकरण</option>
+<option>इतर</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Company / Brand</label>
+
+<input
+id="productCompany"
+placeholder="उदा. XYZ">
+
+</div>
+
+
+<div>
+
+<label>Quantity</label>
+
+<input
+id="productQty"
+type="number"
+step="0.01"
+placeholder="उदा. 20">
+
+</div>
+
+
+<div>
+
+<label>Unit</label>
+
+<select id="productUnit">
+
+<option>L</option>
+<option>ML</option>
+<option>KG</option>
+<option>Gram</option>
+<option>Bag</option>
+<option>Packet</option>
+<option>Bottle</option>
+<option>Box</option>
+<option>Piece</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Purchase Price / Unit</label>
+
+<input
+id="productPurchase"
+type="number"
+step="0.01"
+placeholder="₹">
+
+</div>
+
+
+<div>
+
+<label>Selling Price / Unit</label>
+
+<input
+id="productSelling"
+type="number"
+step="0.01"
+placeholder="₹">
+
+</div>
+
+
+<div>
+
+<label>Batch Number</label>
+
+<input
+id="productBatch"
+placeholder="Batch No">
+
+</div>
+
+
+<div>
+
+<label>Expiry Date</label>
+
+<input
+id="productExpiry"
+type="date">
+
+</div>
+
+</div>
+
+
+<br>
+
+<button
+class="btn green"
+id="productSaveBtn"
+onclick="saveProduct()">
+
+➕ Add Product
+
+</button>
+
+<button
+class="btn gray"
+onclick="clearProductForm()">
+
+Clear
+
+</button>
+
+</div>
+
+
+
+<div class="box">
+
+<input
+class="search"
+id="productSearch"
+onkeyup="displayProducts()"
+placeholder="🔍 Product Search...">
+
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Product</th>
+<th>Category</th>
+<th>Company</th>
+<th>Stock</th>
+<th>Purchase</th>
+<th>Selling</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="productTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= STOCK ================= -->
+
+<section id="stock" class="section">
+
+<div class="section-title">
+
+<h2>📦 Stock Management</h2>
+
+<p>Stock वाढवा किंवा कमी करा</p>
+
+</div>
+
+
+<div class="box">
+
+<h3>📥 Stock In</h3>
+
+<br>
+
+<div class="form-grid">
+
+<div>
+
+<label>Product</label>
+
+<select id="stockProduct"></select>
+
+</div>
+
+
+<div>
+
+<label>Quantity</label>
+
+<input
+id="stockQty"
+type="number"
+step="0.01"
+placeholder="उदा. 10">
+
+</div>
+
+</div>
+
+<br>
+
+<button
+class="btn green"
+onclick="stockIn()">
+
+➕ Add Stock
+
+</button>
+
+</div>
+
+
+<div class="box">
+
+<h3>📦 Current Stock</h3>
+
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Product</th>
+<th>Category</th>
+<th>Stock</th>
+<th>Unit</th>
+<th>Purchase</th>
+<th>Selling</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="stockTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= SALES ================= -->
+
+<section id="sales" class="section">
+
+<div class="section-title no-print">
+
+<h2>🧾 Sales / Billing</h2>
+
+<p>Product विकल्यावर Stock automatic minus होईल</p>
+
+</div>
+
+
+<div class="box no-print">
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Farmer</label>
+
+<select id="saleFarmer"></select>
+
+</div>
+
+
+<div>
+
+<label>Product</label>
+
+<select
+id="saleProduct"
+onchange="setSalePrice()">
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Available Stock</label>
+
+<input
+id="availableStock"
+readonly>
+
+</div>
+
+
+<div>
+
+<label>Sale Quantity</label>
+
+<input
+id="saleQty"
+type="number"
+step="0.01"
+oninput="calculateSale()"
+placeholder="उदा. 3">
+
+</div>
+
+
+<div>
+
+<label>Selling Price</label>
+
+<input
+id="salePrice"
+readonly>
+
+</div>
+
+
+<div>
+
+<label>Discount</label>
+
+<input
+id="saleDiscount"
+type="number"
+step="0.01"
+value="0"
+oninput="calculateSale()">
+
+</div>
+
+
+<div>
+
+<label>Total Amount</label>
+
+<input
+id="saleTotal"
+readonly>
+
+</div>
+
+</div>
+
+
+<br>
+
+<button
+class="btn green"
+onclick="createSale()">
+
+🧾 Create Sale & Bill
+
+</button>
+
+</div>
+
+
+<div class="box bill" id="billBox">
+
+<h2>🌾 कृषी सेवा केंद्र</h2>
+
+<p style="text-align:center">
+Sales Bill
+</p>
+
+<hr>
+
+<br>
+
+<div id="billDetails">
+
+<p>Sale केल्यानंतर Bill येथे दिसेल.</p>
+
+</div>
+
+</div>
+
+
+<div class="no-print" style="text-align:center">
+
+<button
+class="btn blue"
+onclick="window.print()">
+
+🖨️ Print Bill
+
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= SUPPLIERS ================= -->
+
+<section id="suppliers" class="section">
+
+<div class="section-title">
+
+<h2>🚚 Supplier Management</h2>
+
+<p>माल पुरवठादारांची माहिती</p>
+
+</div>
+
+
+<div class="box">
+
+<div class="form-grid">
+
+<div>
+
+<label>Supplier Name</label>
+
+<input
+id="supplierName"
+placeholder="Supplier">
+
+</div>
+
+
+<div>
+
+<label>Mobile</label>
+
+<input
+id="supplierMobile"
+placeholder="Mobile">
+
+</div>
+
+
+<div>
+
+<label>Company</label>
+
+<input
+id="supplierCompany"
+placeholder="Company">
+
+</div>
+
+
+<div>
+
+<label>Address</label>
+
+<input
+id="supplierAddress"
+placeholder="Address">
+
+</div>
+
+</div>
+
+
+<br>
+
+<button
+class="btn green"
+onclick="addSupplier()">
+
+➕ Add Supplier
+
+</button>
+
+</div>
+
+
+<div class="box">
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Mobile</th>
+<th>Company</th>
+<th>Address</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="supplierTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= PROFIT ================= -->
+
+<section id="profit" class="section">
+
+<div class="section-title">
+
+<h2>💰 Profit Management</h2>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Total Sales</h3>
+
+<p>
+₹ <span id="profitSales">0</span>
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Total Cost</h3>
+
+<p>
+₹ <span id="profitCost">0</span>
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Total Profit</h3>
+
+<p>
+₹ <span id="profitAmount">0</span>
+</p>
+
+</div>
+
+</div>
+
+
+<div class="box">
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+<th>Farmer</th>
+<th>Product</th>
+<th>Qty</th>
+<th>Sales</th>
+<th>Cost</th>
+<th>Profit</th>
+
+</tr>
+
+</thead>
+
+<tbody id="profitTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= REPORTS ================= -->
+
+<section id="reports" class="section">
+
+<div class="section-title">
+
+<h2>📈 Reports</h2>
+
+<p>System Summary</p>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Farmers</h3>
+
+<p id="reportFarmers">0</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Products</h3>
+
+<p id="reportProducts">0</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Total Sales</h3>
+
+<p>
+₹ <span id="reportSales">0</span>
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Total Profit</h3>
+
+<p>
+₹ <span id="reportProfit">0</span>
+</p>
+
+</div>
+
+</div>
+
+
+<div class="box">
+
+<h3>📋 Complete Summary</h3>
+
+<br>
+
+<p>
+👨‍🌾 Farmers:
+<b id="summaryFarmers">0</b>
+</p>
+
+<br>
+
+<p>
+🌱 Products:
+<b id="summaryProducts">0</b>
+</p>
+
+<br>
+
+<p>
+📦 Current Stock:
+<b id="summaryStock">0</b>
+</p>
+
+<br>
+
+<p>
+🧾 Sales:
+₹ <b id="summarySales">0</b>
+</p>
+
+<br>
+
+<p>
+💰 Profit:
+₹ <b id="summaryProfit">0</b>
+</p>
+
+<br>
+
+<button
+class="btn blue"
+onclick="window.print()">
+
+🖨️ Print Report
+
+</button>
+
+
+<button
+class="btn red"
+onclick="resetAllData()">
+
+⚠️ Reset All Data
+
+</button>
+
+</div>
+
+</section>
+
+
+</div>
+
+</div>
+
+
+<footer>
+
+© 2026 कृषी सेवा केंद्र व्यवस्थापन प्रणाली | BCA Project
+
+</footer>
+
+
+
+<script>
+
+/* ==========================================
+   DATA
+========================================== */
+
+let farmers =
+JSON.parse(localStorage.getItem("ksk_farmers")) || [];
+
+let products =
+JSON.parse(localStorage.getItem("ksk_products")) || [];
+
+let suppliers =
+JSON.parse(localStorage.getItem("ksk_suppliers")) || [];
+
+let sales =
+JSON.parse(localStorage.getItem("ksk_sales")) || [];
+
+
+let editingFarmerId = null;
+let editingProductId = null;
+
+
+/* ==========================================
+   SAVE DATA
+========================================== */
+
+function saveData(){
+
+    localStorage.setItem(
+        "ksk_farmers",
+        JSON.stringify(farmers)
+    );
+
+    localStorage.setItem(
+        "ksk_products",
+        JSON.stringify(products)
+    );
+
+    localStorage.setItem(
+        "ksk_suppliers",
+        JSON.stringify(suppliers)
+    );
+
+    localStorage.setItem(
+        "ksk_sales",
+        JSON.stringify(sales)
+    );
+}
+
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+function showSection(id,button){
+
+    document.querySelectorAll(".section")
+    .forEach(s=>s.classList.remove("active"));
+
+    document.getElementById(id)
+    .classList.add("active");
+
+
+    document.querySelectorAll(".sidebar button")
+    .forEach(b=>b.classList.remove("active"));
+
+    button.classList.add("active");
+
+
+    updateAll();
+}
+
+
+/* ==========================================
+   FARMER
+========================================== */
+
+function saveFarmer(){
+
+    let name =
+    document.getElementById("farmerName").value.trim();
+
+    let mobile =
+    document.getElementById("farmerMobile").value.trim();
+
+    let village =
+    document.getElementById("farmerVillage").value.trim();
+
+    let land =
+    document.getElementById("farmerLand").value;
+
+
+    if(!name || !mobile || !village){
+
+        alert("कृपया Farmer ची सर्व माहिती भरा.");
+
+        return;
+    }
+
+
+    if(editingFarmerId){
+
+        let farmer =
+        farmers.find(f=>f.id===editingFarmerId);
+
+        farmer.name=name;
+        farmer.mobile=mobile;
+        farmer.village=village;
+        farmer.land=land;
+
+        alert("Farmer successfully updated.");
+
+        editingFarmerId=null;
+
+        document.getElementById("farmerSaveBtn")
+        .innerText="➕ Add Farmer";
+
+    }
+
+    else{
+
+        farmers.push({
+
+            id:Date.now(),
+
+            name,
+
+            mobile,
+
+            village,
+
+            land
+
+        });
+
+        alert("Farmer successfully added.");
+
+    }
+
+
+    saveData();
+
+    clearFarmerForm();
+
+    updateAll();
+}
+
+
+function editFarmer(id){
+
+    let farmer =
+    farmers.find(f=>f.id===id);
+
+    if(!farmer) return;
+
+
+    document.getElementById("farmerName")
+    .value=farmer.name;
+
+    document.getElementById("farmerMobile")
+    .value=farmer.mobile;
+
+    document.getElementById("farmerVillage")
+    .value=farmer.village;
+
+    document.getElementById("farmerLand")
+    .value=farmer.land;
+
+
+    editingFarmerId=id;
+
+
+    document.getElementById("farmerSaveBtn")
+    .innerText="✏️ Update Farmer";
+
+
+    document.getElementById("farmerName")
+    .focus();
+}
+
+
+function deleteFarmer(id){
+
+    if(!confirm("हा Farmer delete करायचा आहे का?"))
+    return;
+
+
+    farmers =
+    farmers.filter(f=>f.id!==id);
+
+
+    saveData();
+
+    updateAll();
+}
+
+
+function clearFarmerForm(){
+
+    document.getElementById("farmerName").value="";
+    document.getElementById("farmerMobile").value="";
+    document.getElementById("farmerVillage").value="";
+    document.getElementById("farmerLand").value="";
+
+    editingFarmerId=null;
+
+    document.getElementById("farmerSaveBtn")
+    .innerText="➕ Add Farmer";
+}
+
+
+function displayFarmers(){
+
+    let search =
+    document.getElementById("farmerSearch")
+    .value.toLowerCase();
+
+
+    let html="";
+
+
+    farmers
+    .filter(f=>
+
+        f.name.toLowerCase().includes(search) ||
+
+        f.mobile.includes(search) ||
+
+        f.village.toLowerCase().includes(search)
+
+    )
+    .forEach((f,index)=>{
+
+        html+=`
+
+        <tr>
+
+        <td>${index+1}</td>
+
+        <td>${f.name}</td>
+
+        <td>${f.mobile}</td>
+
+        <td>${f.village}</td>
+
+        <td>${f.land || 0} Acre</td>
+
+        <td>
+
+        <button
+        class="btn blue"
+        onclick="editFarmer(${f.id})">
+
+        Edit
+
+        </button>
+
+        <button
+        class="btn red"
+        onclick="deleteFarmer(${f.id})">
+
+        Delete
+
+        </button>
+
+        </td>
+
+        </tr>
+
+        `;
+
+    });
+
+
+    document.getElementById("farmerTable")
+    .innerHTML=html;
+}
+
+
+/* ==========================================
+   PRODUCT
+========================================== */
+
+function saveProduct(){
+
+    let name =
+    document.getElementById("productName")
+    .value.trim();
+
+    let category =
+    document.getElementById("productCategory")
+    .value;
+
+    let company =
+    document.getElementById("productCompany")
+    .value.trim();
+
+    let qty =
+    Number(document.getElementById("productQty").value);
+
+    let unit =
+    document.getElementById("productUnit").value;
+
+    let purchase =
+    Number(document.getElementById("productPurchase").value);
+
+    let selling =
+    Number(document.getElementById("productSelling").value);
+
+    let batch =
+    document.getElementById("productBatch").value.trim();
+
+    let expiry =
+    document.getElementById("productExpiry").value;
+
+
+    if(!name || !category || qty<=0){
+
+        alert("Product, Category आणि Quantity भरा.");
+
+        return;
+    }
+
+
+    if(editingProductId){
+
+        let product =
+        products.find(p=>p.id===editingProductId);
+
+
+        product.name=name;
+        product.category=category;
+        product.company=company;
+        product.unit=unit;
+        product.purchase=purchase;
+        product.selling=selling;
+        product.batch=batch;
+        product.expiry=expiry;
+
+
+        /*
+        Edit करताना stock quantity
+        बदलणार नाही.
+        Stock बदलण्यासाठी Stock In वापरा.
+        */
+
+
+        alert("Product successfully updated.");
+
+
+        editingProductId=null;
+
+        document.getElementById("productSaveBtn")
+        .innerText="➕ Add Product";
+
+    }
+
+    else{
+
+        products.push({
+
+            id:Date.now(),
+
+            name,
+
+            category,
+
+            company,
+
+            qty,
+
+            unit,
+
+            purchase,
+
+            selling,
+
+            batch,
+
+            expiry
+
+        });
+
+
+        alert(
+            name+
+            " - "+
+            qty+
+            " "+
+            unit+
+            " Stock मध्ये add झाला."
+        );
+
+    }
+
+
+    saveData();
+
+    clearProductForm();
+
+    updateAll();
+}
+
+
+function editProduct(id){
+
+    let product =
+    products.find(p=>p.id===id);
+
+    if(!product) return;
+
+
+    document.getElementById("productName")
+    .value=product.name;
+
+    document.getElementById("productCategory")
+    .value=product.category;
+
+    document.getElementById("productCompany")
+    .value=product.company;
+
+    /*
+    Quantity input मध्ये सध्याचा stock
+    फक्त display म्हणून दाखवतो.
+    */
+
+    document.getElementById("productQty")
+    .value=product.qty;
+
+    document.getElementById("productUnit")
+    .value=product.unit;
+
+    document.getElementById("productPurchase")
+    .value=product.purchase;
+
+    document.getElementById("productSelling")
+    .value=product.selling;
+
+    document.getElementById("productBatch")
+    .value=product.batch;
+
+    document.getElementById("productExpiry")
+    .value=product.expiry;
+
+
+    editingProductId=id;
+
+
+    document.getElementById("productSaveBtn")
+    .innerText="✏️ Update Product";
+
+
+    document.getElementById("productName")
+    .focus();
+}
+
+
+function deleteProduct(id){
+
+    let product =
+    products.find(p=>p.id===id);
+
+
+    if(!product) return;
+
+
+    if(!confirm(
+        product.name+
+        " delete करायचा आहे का?"
+    ))
+    return;
+
+
+    products =
+    products.filter(p=>p.id!==id);
+
+
+    saveData();
+
+    updateAll();
+}
+
+
+function clearProductForm(){
+
+    document.getElementById("productName").value="";
+    document.getElementById("productCategory").value="";
+    document.getElementById("productCompany").value="";
+    document.getElementById("productQty").value="";
+    document.getElementById("productPurchase").value="";
+    document.getElementById("productSelling").value="";
+    document.getElementById("productBatch").value="";
+    document.getElementById("productExpiry").value="";
+
+    editingProductId=null;
+
+    document.getElementById("productSaveBtn")
+    .innerText="➕ Add Product";
+}
+
+
+function displayProducts(){
+
+    let search =
+    document.getElementById("productSearch")
+    .value.toLowerCase();
+
+
+    let html="";
+
+
+    products
+    .filter(p=>
+
+        p.name.toLowerCase().includes(search) ||
+
+        p.category.toLowerCase().includes(search) ||
+
+        p.company.toLowerCase().includes(search)
+
+    )
+    .forEach((p,index)=>{
+
+        let status =
+        p.qty<=5
+        ? `<span class="low">Low Stock</span>`
+        : `<span class="normal">Available</span>`;
+
+
+        html+=`
+
+        <tr>
+
+        <td>${index+1}</td>
+
+        <td>
+        <b>${p.name}</b>
+        </td>
+
+        <td>${p.category}</td>
+
+        <td>${p.company || "-"}</td>
+
+        <td>
+        <b>${p.qty} ${p.unit}</b>
+        </td>
+
+        <td>₹${p.purchase}</td>
+
+        <td>₹${p.selling}</td>
+
+        <td>
+
+        <button
+        class="btn blue"
+        onclick="editProduct(${p.id})">
+
+        Edit
+
+        </button>
+
+        <button
+        class="btn red"
+        onclick="deleteProduct(${p.id})">
+
+        Delete
+
+        </button>
+
+        </td>
+
+        </tr>
+
+        `;
+
+    });
+
+
+    document.getElementById("productTable")
+    .innerHTML=html;
+}
+
+
+/* ==========================================
+   STOCK IN
+========================================== */
+
+function loadStockProducts(){
+
+    let select =
+    document.getElementById("stockProduct");
+
+
+    select.innerHTML =
+    `<option value="">Select Product</option>`;
+
+
+    products.forEach(p=>{
+
+        select.innerHTML+=`
+
+        <option value="${p.id}">
+
+        ${p.name}
+        - Current: ${p.qty} ${p.unit}
+
+        </option>
+
+        `;
+
+    });
+}
+
+
+function stockIn(){
+
+    let productId =
+    Number(
+        document.getElementById("stockProduct").value
+    );
+
+
+    let qty =
+    Number(
+        document.getElementById("stockQty").value
+    );
+
+
+    let product =
+    products.find(p=>p.id===productId);
+
+
+    if(!product){
+
+        alert("Product select करा.");
+
+        return;
+    }
+
+
+    if(qty<=0){
+
+        alert("Valid quantity टाका.");
+
+        return;
+    }
+
+
+    product.qty =
+    Number(product.qty)+qty;
+
+
+    saveData();
+
+    document.getElementById("stockQty").value="";
+
+
+    alert(
+        "Stock Updated!\n"+
+        product.name+
+        " = "+
+        product.qty+
+        " "+
+        product.unit
+    );
+
+
+    updateAll();
+}
+
+
+function displayStock(){
+
+    let html="";
+
+
+    products.forEach(p=>{
+
+        let status =
+        p.qty<=5
+
+        ? `<span class="low">⚠ Low Stock</span>`
+
+        : `<span class="normal">✓ Available</span>`;
+
+
+        html+=`
+
+        <tr>
+
+        <td>${p.name}</td>
+
+        <td>${p.category}</td>
+
+        <td>
+        <b>${p.qty}</b>
+        </td>
+
+        <td>${p.unit}</td>
+
+        <td>₹${p.purchase}</td>
+
+        <td>₹${p.selling}</td>
+
+        <td>${status}</td>
+
+        </tr>
+
+        `;
+
+    });
+
+
+    document.getElementById("stockTable")
+    .innerHTML=html;
+}
+
+
+/* ==========================================
+   SALES
+========================================== */
+
+function loadSaleOptions(){
+
+    let farmerSelect =
+    document.getElementById("saleFarmer");
+
+
+    farmerSelect.innerHTML =
+    `<option value="">Select Farmer</option>`;
+
+
+    farmers.forEach(f=>{
+
+        farmerSelect.innerHTML+=`
+
+        <option value="${f.id}">
+        ${f.name} - ${f.mobile}
+        </option>
+
+        `;
+
+    });
+
+
+    let productSelect =
+    document.getElementById("saleProduct");
+
+
+    let current =
+    productSelect.value;
+
+
+    productSelect.innerHTML =
+    `<option value="">Select Product</option>`;
+
+
+    products.forEach(p=>{
+
+        if(p.qty>0){
+
+            productSelect.innerHTML+=`
+
+            <option value="${p.id}">
+
+            ${p.name}
+            - ${p.qty} ${p.unit}
+            - ₹${p.selling}
+
+            </option>
+
+            `;
+
+        }
+
+    });
+
+
+    if(current){
+
+        productSelect.value=current;
+
+    }
+}
+
+
+function setSalePrice(){
+
+    let id =
+    Number(
+        document.getElementById("saleProduct").value
+    );
+
+
+    let product =
+    products.find(p=>p.id===id);
+
+
+    if(product){
+
+        document.getElementById("salePrice")
+        .value=product.selling;
+
+
+        document.getElementById("availableStock")
+        .value=
+        product.qty+
+        " "+
+        product.unit;
+
+    }
+
+    else{
+
+        document.getElementById("salePrice").value="";
+
+        document.getElementById("availableStock").value="";
+
+    }
+
+
+    calculateSale();
+}
+
+
+function calculateSale(){
+
+    let qty =
+    Number(
+        document.getElementById("saleQty").value
+    );
+
+
+    let price =
+    Number(
+        document.getElementById("salePrice").value
+    );
+
+
+    let discount =
+    Number(
+        document.getElementById("saleDiscount").value
+    );
+
+
+    let total =
+    (qty*price)-discount;
+
+
+    if(total<0)
+    total=0;
+
+
+    document.getElementById("saleTotal")
+    .value=total.toFixed(2);
+}
+
+
+function createSale(){
+
+    let farmerId =
+    Number(
+        document.getElementById("saleFarmer").value
+    );
+
+
+    let productId =
+    Number(
+        document.getElementById("saleProduct").value
+    );
+
+
+    let qty =
+    Number(
+        document.getElementById("saleQty").value
+    );
+
+
+    let discount =
+    Number(
+        document.getElementById("saleDiscount").value
+    );
+
+
+    let farmer =
+    farmers.find(f=>f.id===farmerId);
+
+
+    let product =
+    products.find(p=>p.id===productId);
+
+
+    if(!farmer){
+
+        alert("Farmer select करा.");
+
+        return;
+    }
+
+
+    if(!product){
+
+        alert("Product select करा.");
+
+        return;
+    }
+
+
+    if(qty<=0){
+
+        alert("Sale quantity टाका.");
+
+        return;
+    }
+
+
+    /*
+    IMPORTANT:
+    Available Stock पेक्षा जास्त
+    माल विकता येणार नाही.
+    */
+
+    if(qty>Number(product.qty)){
+
+        alert(
+            "❌ Insufficient Stock!\n\n"+
+            "Available Stock: "+
+            product.qty+
+            " "+
+            product.unit
+        );
+
+        return;
+    }
+
+
+    let total =
+    (qty*product.selling)-discount;
+
+
+    if(total<0){
+
+        alert("Discount total पेक्षा जास्त असू शकत नाही.");
+
+        return;
+    }
+
+
+    let cost =
+    qty*product.purchase;
+
+
+    let profit =
+    total-cost;
+
+
+    /*
+    ⭐ MAIN STOCK LOGIC ⭐
+
+    विकलेली quantity automatic minus
+    */
+
+    product.qty =
+    Number(product.qty)-qty;
+
+
+    let sale={
+
+        id:Date.now(),
+
+        date:new Date()
+        .toLocaleDateString("en-IN"),
+
+        farmerId:farmer.id,
+
+        farmerName:farmer.name,
+
+        productId:product.id,
+
+        productName:product.name,
+
+        qty:qty,
+
+        unit:product.unit,
+
+        price:product.selling,
+
+        discount:discount,
+
+        total:total,
+
+        cost:cost,
+
+        profit:profit
+
+    };
+
+
+    sales.push(sale);
+
+
+    saveData();
+
+
+    displayBill(sale);
+
+
+    document.getElementById("saleQty")
+    .value="";
+
+    document.getElementById("saleDiscount")
+    .value="0";
+
+
+    document.getElementById("saleTotal")
+    .value="";
+
+
+    /*
+    Product पुन्हा select केल्यावर
+    updated stock दिसेल.
+    */
+
+    updateAll();
+
+
+    alert(
+        "Sale Successful!\n\n"+
+        product.name+
+        "\nSold: "+
+        qty+
+        " "+
+        product.unit+
+        "\nRemaining Stock: "+
+        product.qty+
+        " "+
+        product.unit+
+        "\n\nProfit: ₹"+
+        profit.toFixed(2)
+    );
+}
+
+
+function displayBill(sale){
+
+    document.getElementById("billDetails")
+    .innerHTML=`
+
+    <p>
+    <b>Bill Date:</b>
+    ${sale.date}
+    </p>
+
+    <p>
+    <b>Farmer:</b>
+    ${sale.farmerName}
+    </p>
+
+    <br>
+
+    <table style="min-width:100%">
+
+    <tr>
+
+    <th>Product</th>
+
+    <th>Qty</th>
+
+    <th>Unit</th>
+
+    <th>Price</th>
+
+    <th>Total</th>
+
+    </tr>
+
+
+    <tr>
+
+    <td>${sale.productName}</td>
+
+    <td>${sale.qty}</td>
+
+    <td>${sale.unit}</td>
+
+    <td>₹${sale.price}</td>
+
+    <td>₹${sale.total.toFixed(2)}</td>
+
+    </tr>
+
+    </table>
+
+
+    <p style="text-align:right;margin-top:10px">
+
+    Discount:
+    ₹${sale.discount.toFixed(2)}
+
+    </p>
+
+
+    <div class="total">
+
+    Total:
+    ₹${sale.total.toFixed(2)}
+
+    </div>
+
+
+    <br>
+
+    <p style="text-align:center">
+
+    धन्यवाद! पुन्हा भेट द्या.
+
+    </p>
+
+    `;
+}
+
+
+/* ==========================================
+   SUPPLIER
+========================================== */
+
+function addSupplier(){
+
+    let name =
+    document.getElementById("supplierName")
+    .value.trim();
+
+    let mobile =
+    document.getElementById("supplierMobile")
+    .value.trim();
+
+    let company =
+    document.getElementById("supplierCompany")
+    .value.trim();
+
+    let address =
+    document.getElementById("supplierAddress")
+    .value.trim();
+
+
+    if(!name || !mobile){
+
+        alert("Supplier Name आणि Mobile भरा.");
+
+        return;
+    }
+
+
+    suppliers.push({
+
+        id:Date.now(),
+
+        name,
+
+        mobile,
+
+        company,
+
+        address
+
+    });
+
+
+    saveData();
+
+
+    document.getElementById("supplierName").value="";
+    document.getElementById("supplierMobile").value="";
+    document.getElementById("supplierCompany").value="";
+    document.getElementById("supplierAddress").value="";
+
+
+    updateAll();
+
+
+    alert("Supplier added successfully.");
+}
+
+
+function displaySuppliers(){
+
+    let html="";
+
+
+    suppliers.forEach((s,index)=>{
+
+        html+=`
+
+        <tr>
+
+        <td>${index+1}</td>
+
+        <td>${s.name}</td>
+
+        <td>${s.mobile}</td>
+
+        <td>${s.company || "-"}</td>
+
+        <td>${s.address || "-"}</td>
+
+        <td>
+
+        <button
+        class="btn red"
+        onclick="deleteSupplier(${s.id})">
+
+        Delete
+
+        </button>
+
+        </td>
+
+        </tr>
+
+        `;
+
+    });
+
+
+    document.getElementById("supplierTable")
+    .innerHTML=html;
+}
+
+
+function deleteSupplier(id){
+
+    if(!confirm("Supplier delete करायचा आहे का?"))
+    return;
+
+
+    suppliers =
+    suppliers.filter(s=>s.id!==id);
+
+
+    saveData();
+
+    updateAll();
+}
+
+
+/* ==========================================
+   PROFIT
+========================================== */
+
+function displayProfit(){
+
+    let html="";
+
+
+    sales.forEach(s=>{
+
+        html+=`
+
+        <tr>
+
+        <td>${s.date}</td>
+
+        <td>${s.farmerName}</td>
+
+        <td>${s.productName}</td>
+
+        <td>${s.qty} ${s.unit}</td>
+
+        <td>₹${s.total.toFixed(2)}</td>
+
+        <td>₹${s.cost.toFixed(2)}</td>
+
+        <td>
+        <b>₹${s.profit.toFixed(2)}</b>
+        </td>
+
+        </tr>
+
+        `;
+
+    });
+
+
+    document.getElementById("profitTable")
+    .innerHTML=html;
+
+
+    let totalSales =
+    sales.reduce(
+        (sum,s)=>sum+Number(s.total),
+        0
+    );
+
+
+    let totalCost =
+    sales.reduce(
+        (sum,s)=>sum+Number(s.cost),
+        0
+    );
+
+
+    let totalProfit =
+    sales.reduce(
+        (sum,s)=>sum+Number(s.profit),
+        0
+    );
+
+
+    document.getElementById("profitSales")
+    .innerText=totalSales.toFixed(2);
+
+
+    document.getElementById("profitCost")
+    .innerText=totalCost.toFixed(2);
+
+
+    document.getElementById("profitAmount")
+    .innerText=totalProfit.toFixed(2);
+}
+
+
+/* ==========================================
+   DASHBOARD
+========================================== */
+
+function updateDashboard(){
+
+    let totalSales =
+    sales.reduce(
+        (sum,s)=>sum+Number(s.total),
+        0
+    );
+
+
+    let totalProfit =
+    sales.reduce(
+        (sum,s)=>sum+Number(s.profit),
+        0
+    );
+
+
+    let totalStock =
+    products.reduce(
+        (sum,p)=>sum+Number(p.qty),
+        0
+    );
+
+
+    document.getElementById("dashFarmers")
+    .innerText=farmers.length;
+
+
+    document.getElementById("dashProducts")
+    .innerText=products.length;
+
+
+    document.getElementById("dashStock")
+    .innerText=totalStock;
+
+
+    document.getElementById("dashSales")
+    .innerText=totalSales.toFixed(2);
+
+
+    document.getElementById("dashProfit")
+    .innerText=totalProfit.toFixed(2);
+
+
+    let low =
+    products.filter(p=>Number(p.qty)<=5);
+
+
+    let lowBox =
+    document.getElementById("dashboardLowStock");
+
+
+    if(low.length===0){
+
+        lowBox.innerHTML=
+        `<p class="normal">
+        ✓ सर्व products चा stock ठीक आहे.
+        </p>`;
+
+    }
+
+    else{
+
+        lowBox.innerHTML=
+        `<div class="warning">
+        ⚠️ Low Stock: ${
+            low.map(
+                p=>p.name+
+                " ("+
+                p.qty+
+                " "+
+                p.unit+
+                ")"
+            ).join(", ")
+        }
+        </div>`;
+
+    }
+}
+
+
+/* ==========================================
+   REPORTS
+========================================== */
+
+function updateReports(){
+
+    let totalSales =
+    sales.reduce(
+        (sum,s)=>sum+Number(s.total),
+        0
+    );
+
+
+    let totalProfit =
+    sales.reduce(
+        (sum,s)=>sum+Number(s.profit),
+        0
+    );
+
+
+    let totalStock =
+    products.reduce(
+        (sum,p)=>sum+Number(p.qty),
+        0
+    );
+
+
+    document.getElementById("reportFarmers")
+    .innerText=farmers.length;
+
+
+    document.getElementById("reportProducts")
+    .innerText=products.length;
+
+
+    document.getElementById("reportSales")
+    .innerText=totalSales.toFixed(2);
+
+
+    document.getElementById("reportProfit")
+    .innerText=totalProfit.toFixed(2);
+
+
+    document.getElementById("summaryFarmers")
+    .innerText=farmers.length;
+
+
+    document.getElementById("summaryProducts")
+    .innerText=products.length;
+
+
+    document.getElementById("summaryStock")
+    .innerText=totalStock;
+
+
+    document.getElementById("summarySales")
+    .innerText=totalSales.toFixed(2);
+
+
+    document.getElementById("summaryProfit")
+    .innerText=totalProfit.toFixed(2);
+}
+
+
+/* ==========================================
+   RESET
+========================================== */
+
+function resetAllData(){
+
+    if(
+        !confirm(
+            "⚠️ सर्व Farmers, Products, Stock, Sales आणि Suppliers delete होतील.\n\nContinue?"
+        )
+    )
+    return;
+
+
+    localStorage.removeItem("ksk_farmers");
+    localStorage.removeItem("ksk_products");
+    localStorage.removeItem("ksk_suppliers");
+    localStorage.removeItem("ksk_sales");
+
+
+    farmers=[];
+    products=[];
+    suppliers=[];
+    sales=[];
+
+
+    clearFarmerForm();
+
+    clearProductForm();
+
+
+    document.getElementById("billDetails")
+    .innerHTML=
+    "<p>Sale केल्यानंतर Bill येथे दिसेल.</p>";
+
+
+    updateAll();
+
+
+    alert("सर्व data reset झाला.");
+}
+
+
+/* ==========================================
+   UPDATE ALL
+========================================== */
+
+function updateAll(){
+
+    displayFarmers();
+
+    displayProducts();
+
+    displayStock();
+
+    displaySuppliers();
+
+    displayProfit();
+
+    loadStockProducts();
+
+    loadSaleOptions();
+
+    updateDashboard();
+
+    updateReports();
+}
+
+
+/* ==========================================
+   START SYSTEM
+========================================== */
+
+updateAll();
+
+</script>
+
+</body>
+</html>
