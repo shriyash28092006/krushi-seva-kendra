@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="mr">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>कृषी सेवा केंद्र व्यवस्थापन प्रणाली</title>
 
@@ -92,7 +96,8 @@ header p{
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
     gap:15px;
     margin-bottom:25px;
 }
@@ -101,7 +106,8 @@ header p{
     background:white;
     padding:20px;
     border-radius:12px;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    box-shadow:
+    0 3px 12px rgba(0,0,0,.08);
     border-left:5px solid #2d8b57;
 }
 
@@ -121,13 +127,15 @@ header p{
     background:white;
     padding:20px;
     border-radius:12px;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    box-shadow:
+    0 3px 12px rgba(0,0,0,.08);
     margin-bottom:20px;
 }
 
 .form-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(200px,1fr));
     gap:15px;
 }
 
@@ -257,6 +265,20 @@ tr:hover{
     margin-top:15px;
 }
 
+.cart-total{
+    text-align:right;
+    font-size:22px;
+    font-weight:bold;
+    color:#126b38;
+    margin-top:15px;
+}
+
+.empty{
+    text-align:center;
+    padding:20px;
+    color:#777;
+}
+
 footer{
     text-align:center;
     padding:15px;
@@ -277,7 +299,8 @@ footer{
     .sidebar{
         width:100%;
         display:grid;
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+        repeat(2,1fr);
     }
 
     .main{
@@ -309,18 +332,33 @@ footer{
     #sales{
         display:block !important;
     }
+
+    .bill{
+        border:none;
+    }
 }
 
 </style>
+
 </head>
 
 <body>
 
+
+<!-- ================= HEADER ================= -->
+
 <header>
 
 <div>
-<h1>🌾 कृषी सेवा केंद्र व्यवस्थापन प्रणाली</h1>
-<p>Agricultural Products, Stock, Sales & Profit Management</p>
+
+<h1>
+🌾 कृषी सेवा केंद्र व्यवस्थापन प्रणाली
+</h1>
+
+<p>
+Agricultural Products, Stock, Sales & Profit Management
+</p>
+
 </div>
 
 <div>
@@ -333,40 +371,65 @@ footer{
 <div class="container">
 
 
-<!-- SIDEBAR -->
+<!-- ================= SIDEBAR ================= -->
 
 <div class="sidebar">
 
-<button class="active" onclick="showSection('dashboard',this)">
+<button
+class="active"
+onclick="showSection('dashboard',this)">
+
 📊 Dashboard
+
 </button>
 
-<button onclick="showSection('farmers',this)">
+<button
+onclick="showSection('farmers',this)">
+
 👨‍🌾 Farmers
+
 </button>
 
-<button onclick="showSection('products',this)">
+<button
+onclick="showSection('products',this)">
+
 🌱 Products
+
 </button>
 
-<button onclick="showSection('stock',this)">
+<button
+onclick="showSection('stock',this)">
+
 📦 Stock
+
 </button>
 
-<button onclick="showSection('sales',this)">
+<button
+onclick="showSection('sales',this)">
+
 🧾 Sales / Billing
+
 </button>
 
-<button onclick="showSection('suppliers',this)">
+<button
+onclick="showSection('suppliers',this)">
+
 🚚 Suppliers
+
 </button>
 
-<button onclick="showSection('profit',this)">
+<button
+onclick="showSection('profit',this)">
+
 💰 Profit
+
 </button>
 
-<button onclick="showSection('reports',this)">
+<button
+onclick="showSection('reports',this)">
+
 📈 Reports
+
 </button>
 
 </div>
@@ -375,44 +438,90 @@ footer{
 <div class="main">
 
 
-<!-- ================= DASHBOARD ================= -->
+<!-- ==================================================
+DASHBOARD
+================================================== -->
 
-<section id="dashboard" class="section active">
+<section
+id="dashboard"
+class="section active">
 
 <div class="section-title">
 
 <h2>📊 Dashboard</h2>
 
-<p>कृषी सेवा केंद्राची संपूर्ण माहिती</p>
+<p>
+कृषी सेवा केंद्राची संपूर्ण माहिती
+</p>
 
 </div>
 
 
 <div class="cards">
 
-<div class="card">
-<h3>👨‍🌾 Total Farmers</h3>
-<p id="dashFarmers">0</p>
-</div>
 
 <div class="card">
-<h3>🌱 Total Products</h3>
-<p id="dashProducts">0</p>
+
+<h3>
+👨‍🌾 Total Farmers
+</h3>
+
+<p id="dashFarmers">
+0
+</p>
+
 </div>
 
-<div class="card">
-<h3>📦 Total Stock</h3>
-<p id="dashStock">0</p>
-</div>
 
 <div class="card">
-<h3>🧾 Total Sales</h3>
-<p>₹ <span id="dashSales">0</span></p>
+
+<h3>
+🌱 Total Products
+</h3>
+
+<p id="dashProducts">
+0
+</p>
+
 </div>
 
+
 <div class="card">
-<h3>💰 Total Profit</h3>
-<p>₹ <span id="dashProfit">0</span></p>
+
+<h3>
+📦 Total Stock
+</h3>
+
+<p id="dashStock">
+0
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🧾 Total Sales
+</h3>
+
+<p>
+₹ <span id="dashSales">0</span>
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+💰 Total Profit
+</h3>
+
+<p>
+₹ <span id="dashProfit">0</span>
+</p>
+
 </div>
 
 </div>
@@ -420,7 +529,11 @@ footer{
 
 <div class="box">
 
-<h3>📌 Low Stock Products</h3>
+<h3>
+📌 Low Stock Products
+</h3>
+
+<br>
 
 <div id="dashboardLowStock"></div>
 
@@ -429,16 +542,23 @@ footer{
 </section>
 
 
+<!-- ==================================================
+FARMERS
+================================================== -->
 
-<!-- ================= FARMERS ================= -->
-
-<section id="farmers" class="section">
+<section
+id="farmers"
+class="section">
 
 <div class="section-title">
 
-<h2>👨‍🌾 Farmer Management</h2>
+<h2>
+👨‍🌾 Farmer Management
+</h2>
 
-<p>शेतकऱ्यांची माहिती Add / Edit / Delete करा</p>
+<p>
+शेतकऱ्यांची माहिती Add / Edit / Delete करा
+</p>
 
 </div>
 
@@ -447,9 +567,12 @@ footer{
 
 <div class="form-grid">
 
+
 <div>
 
-<label>शेतकरी नाव</label>
+<label>
+शेतकरी नाव
+</label>
 
 <input
 id="farmerName"
@@ -460,7 +583,9 @@ placeholder="उदा. Ramesh Patil">
 
 <div>
 
-<label>मोबाईल नंबर</label>
+<label>
+मोबाईल नंबर
+</label>
 
 <input
 id="farmerMobile"
@@ -471,7 +596,9 @@ placeholder="मोबाईल नंबर">
 
 <div>
 
-<label>गाव</label>
+<label>
+गाव
+</label>
 
 <input
 id="farmerVillage"
@@ -482,11 +609,14 @@ placeholder="गाव">
 
 <div>
 
-<label>जमीन (Acre)</label>
+<label>
+जमीन (Acre)
+</label>
 
 <input
 id="farmerLand"
 type="number"
+step="0.01"
 placeholder="उदा. 5">
 
 </div>
@@ -496,6 +626,7 @@ placeholder="उदा. 5">
 
 <br>
 
+
 <button
 class="btn green"
 id="farmerSaveBtn"
@@ -504,6 +635,7 @@ onclick="saveFarmer()">
 ➕ Add Farmer
 
 </button>
+
 
 <button
 class="btn gray"
@@ -555,16 +687,23 @@ placeholder="🔍 Farmer Search...">
 </section>
 
 
+<!-- ==================================================
+PRODUCTS
+================================================== -->
 
-<!-- ================= PRODUCTS ================= -->
-
-<section id="products" class="section">
+<section
+id="products"
+class="section">
 
 <div class="section-title">
 
-<h2>🌱 Product Management</h2>
+<h2>
+🌱 Product Management
+</h2>
 
-<p>तुम्हाला हवा तो कोणताही कृषी Product Add करा</p>
+<p>
+तुम्हाला हवा तो कोणताही कृषी Product Add करा
+</p>
 
 </div>
 
@@ -576,31 +715,60 @@ placeholder="🔍 Farmer Search...">
 
 <div>
 
-<label>Product Name</label>
+<label>
+Product Name
+</label>
 
 <input
 id="productName"
-placeholder="उदा. तणनाशक">
+placeholder="उदा. DAP 50 KG">
 
 </div>
 
 
 <div>
 
-<label>Category</label>
+<label>
+Category
+</label>
 
 <select id="productCategory">
 
-<option value="">Select Category</option>
+<option value="">
+Select Category
+</option>
 
-<option>बियाणे</option>
-<option>खते</option>
-<option>तणनाशक</option>
-<option>कीटकनाशक</option>
-<option>बुरशीनाशक</option>
-<option>औषध</option>
-<option>शेती उपकरण</option>
-<option>इतर</option>
+<option>
+बियाणे
+</option>
+
+<option>
+खते
+</option>
+
+<option>
+तणनाशक
+</option>
+
+<option>
+कीटकनाशक
+</option>
+
+<option>
+बुरशीनाशक
+</option>
+
+<option>
+औषध
+</option>
+
+<option>
+शेती उपकरण
+</option>
+
+<option>
+इतर
+</option>
 
 </select>
 
@@ -609,7 +777,9 @@ placeholder="उदा. तणनाशक">
 
 <div>
 
-<label>Company / Brand</label>
+<label>
+Company / Brand
+</label>
 
 <input
 id="productCompany"
@@ -620,7 +790,9 @@ placeholder="उदा. XYZ">
 
 <div>
 
-<label>Quantity</label>
+<label>
+Quantity
+</label>
 
 <input
 id="productQty"
@@ -633,7 +805,9 @@ placeholder="उदा. 20">
 
 <div>
 
-<label>Unit</label>
+<label>
+Unit
+</label>
 
 <select id="productUnit">
 
@@ -654,7 +828,9 @@ placeholder="उदा. 20">
 
 <div>
 
-<label>Purchase Price / Unit</label>
+<label>
+Purchase Price / Unit
+</label>
 
 <input
 id="productPurchase"
@@ -667,7 +843,9 @@ placeholder="₹">
 
 <div>
 
-<label>Selling Price / Unit</label>
+<label>
+Selling Price / Unit
+</label>
 
 <input
 id="productSelling"
@@ -680,7 +858,9 @@ placeholder="₹">
 
 <div>
 
-<label>Batch Number</label>
+<label>
+Batch Number
+</label>
 
 <input
 id="productBatch"
@@ -691,7 +871,9 @@ placeholder="Batch No">
 
 <div>
 
-<label>Expiry Date</label>
+<label>
+Expiry Date
+</label>
 
 <input
 id="productExpiry"
@@ -704,6 +886,7 @@ type="date">
 
 <br>
 
+
 <button
 class="btn green"
 id="productSaveBtn"
@@ -712,6 +895,7 @@ onclick="saveProduct()">
 ➕ Add Product
 
 </button>
+
 
 <button
 class="btn gray"
@@ -722,7 +906,6 @@ Clear
 </button>
 
 </div>
-
 
 
 <div class="box">
@@ -766,31 +949,44 @@ placeholder="🔍 Product Search...">
 </section>
 
 
+<!-- ==================================================
+STOCK
+================================================== -->
 
-<!-- ================= STOCK ================= -->
-
-<section id="stock" class="section">
+<section
+id="stock"
+class="section">
 
 <div class="section-title">
 
-<h2>📦 Stock Management</h2>
+<h2>
+📦 Stock Management
+</h2>
 
-<p>Stock वाढवा किंवा कमी करा</p>
+<p>
+Stock वाढवा
+</p>
 
 </div>
 
 
 <div class="box">
 
-<h3>📥 Stock In</h3>
+<h3>
+📥 Stock In
+</h3>
 
 <br>
 
+
 <div class="form-grid">
+
 
 <div>
 
-<label>Product</label>
+<label>
+Product
+</label>
 
 <select id="stockProduct"></select>
 
@@ -799,7 +995,9 @@ placeholder="🔍 Product Search...">
 
 <div>
 
-<label>Quantity</label>
+<label>
+Quantity
+</label>
 
 <input
 id="stockQty"
@@ -811,7 +1009,9 @@ placeholder="उदा. 10">
 
 </div>
 
+
 <br>
+
 
 <button
 class="btn green"
@@ -826,7 +1026,9 @@ onclick="stockIn()">
 
 <div class="box">
 
-<h3>📦 Current Stock</h3>
+<h3>
+📦 Current Stock
+</h3>
 
 
 <div class="table-wrapper">
@@ -860,19 +1062,29 @@ onclick="stockIn()">
 </section>
 
 
+<!-- ==================================================
+SALES
+================================================== -->
 
-<!-- ================= SALES ================= -->
+<section
+id="sales"
+class="section">
 
-<section id="sales" class="section">
 
 <div class="section-title no-print">
 
-<h2>🧾 Sales / Billing</h2>
+<h2>
+🧾 Sales / Billing
+</h2>
 
-<p>Product विकल्यावर Stock automatic minus होईल</p>
+<p>
+एकाच Bill मध्ये अनेक Products विकता येतील
+</p>
 
 </div>
 
+
+<!-- SALE FORM -->
 
 <div class="box no-print">
 
@@ -881,20 +1093,15 @@ onclick="stockIn()">
 
 <div>
 
-<label>Farmer</label>
+<label>
+Farmer
+</label>
 
-<select id="saleFarmer"></select>
+<select id="saleFarmer">
 
-</div>
-
-
-<div>
-
-<label>Product</label>
-
-<select
-id="saleProduct"
-onchange="setSalePrice()">
+<option value="">
+Select Farmer
+</option>
 
 </select>
 
@@ -903,7 +1110,28 @@ onchange="setSalePrice()">
 
 <div>
 
-<label>Available Stock</label>
+<label>
+Product
+</label>
+
+<select
+id="saleProduct"
+onchange="setSalePrice()">
+
+<option value="">
+Select Product
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Available Stock
+</label>
 
 <input
 id="availableStock"
@@ -914,21 +1142,24 @@ readonly>
 
 <div>
 
-<label>Sale Quantity</label>
+<label>
+Sale Quantity
+</label>
 
 <input
 id="saleQty"
 type="number"
 step="0.01"
-oninput="calculateSale()"
-placeholder="उदा. 3">
+placeholder="उदा. 2">
 
 </div>
 
 
 <div>
 
-<label>Selling Price</label>
+<label>
+Selling Price / Unit
+</label>
 
 <input
 id="salePrice"
@@ -939,25 +1170,15 @@ readonly>
 
 <div>
 
-<label>Discount</label>
+<label>
+Discount
+</label>
 
 <input
 id="saleDiscount"
 type="number"
 step="0.01"
-value="0"
-oninput="calculateSale()">
-
-</div>
-
-
-<div>
-
-<label>Total Amount</label>
-
-<input
-id="saleTotal"
-readonly>
+value="0">
 
 </div>
 
@@ -966,9 +1187,80 @@ readonly>
 
 <br>
 
+
 <button
 class="btn green"
-onclick="createSale()">
+onclick="addProductToCart()">
+
+➕ Add Product
+
+</button>
+
+
+<button
+class="btn gray"
+onclick="clearSaleCart()">
+
+🗑️ Clear Cart
+
+</button>
+
+</div>
+
+
+<!-- SALE CART -->
+
+<div class="box no-print">
+
+<h3>
+🛒 Current Sale Cart
+</h3>
+
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Product</th>
+<th>Qty</th>
+<th>Unit</th>
+<th>Price</th>
+<th>Discount</th>
+<th>Total</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="saleCartTable"></tbody>
+
+</table>
+
+</div>
+
+
+<div class="cart-total">
+
+Grand Total:
+₹ <span id="cartGrandTotal">
+0.00
+</span>
+
+</div>
+
+
+<br>
+
+
+<button
+class="btn green"
+onclick="createMultiProductSale()">
 
 🧾 Create Sale & Bill
 
@@ -977,28 +1269,43 @@ onclick="createSale()">
 </div>
 
 
-<div class="box bill" id="billBox">
+<!-- BILL -->
 
-<h2>🌾 कृषी सेवा केंद्र</h2>
+<div
+class="box bill"
+id="billBox">
+
+
+<h2>
+🌾 कृषी सेवा केंद्र
+</h2>
+
 
 <p style="text-align:center">
 Sales Bill
 </p>
 
+
 <hr>
 
 <br>
 
+
 <div id="billDetails">
 
-<p>Sale केल्यानंतर Bill येथे दिसेल.</p>
+<p>
+Sale केल्यानंतर Bill येथे दिसेल.
+</p>
 
 </div>
 
 </div>
 
 
-<div class="no-print" style="text-align:center">
+<div
+class="no-print"
+style="text-align:center">
+
 
 <button
 class="btn blue"
@@ -1013,16 +1320,24 @@ onclick="window.print()">
 </section>
 
 
+<!-- ==================================================
+SUPPLIERS
+================================================== -->
 
-<!-- ================= SUPPLIERS ================= -->
+<section
+id="suppliers"
+class="section">
 
-<section id="suppliers" class="section">
 
 <div class="section-title">
 
-<h2>🚚 Supplier Management</h2>
+<h2>
+🚚 Supplier Management
+</h2>
 
-<p>माल पुरवठादारांची माहिती</p>
+<p>
+माल पुरवठादारांची माहिती
+</p>
 
 </div>
 
@@ -1031,9 +1346,12 @@ onclick="window.print()">
 
 <div class="form-grid">
 
+
 <div>
 
-<label>Supplier Name</label>
+<label>
+Supplier Name
+</label>
 
 <input
 id="supplierName"
@@ -1044,7 +1362,9 @@ placeholder="Supplier">
 
 <div>
 
-<label>Mobile</label>
+<label>
+Mobile
+</label>
 
 <input
 id="supplierMobile"
@@ -1055,7 +1375,9 @@ placeholder="Mobile">
 
 <div>
 
-<label>Company</label>
+<label>
+Company
+</label>
 
 <input
 id="supplierCompany"
@@ -1066,7 +1388,9 @@ placeholder="Company">
 
 <div>
 
-<label>Address</label>
+<label>
+Address
+</label>
 
 <input
 id="supplierAddress"
@@ -1078,6 +1402,7 @@ placeholder="Address">
 
 
 <br>
+
 
 <button
 class="btn green"
@@ -1122,26 +1447,37 @@ onclick="addSupplier()">
 </section>
 
 
+<!-- ==================================================
+PROFIT
+================================================== -->
 
-<!-- ================= PROFIT ================= -->
+<section
+id="profit"
+class="section">
 
-<section id="profit" class="section">
 
 <div class="section-title">
 
-<h2>💰 Profit Management</h2>
+<h2>
+💰 Profit Management
+</h2>
 
 </div>
 
 
 <div class="cards">
 
+
 <div class="card">
 
-<h3>Total Sales</h3>
+<h3>
+Total Sales
+</h3>
 
 <p>
-₹ <span id="profitSales">0</span>
+₹ <span id="profitSales">
+0
+</span>
 </p>
 
 </div>
@@ -1149,10 +1485,14 @@ onclick="addSupplier()">
 
 <div class="card">
 
-<h3>Total Cost</h3>
+<h3>
+Total Cost
+</h3>
 
 <p>
-₹ <span id="profitCost">0</span>
+₹ <span id="profitCost">
+0
+</span>
 </p>
 
 </div>
@@ -1160,10 +1500,14 @@ onclick="addSupplier()">
 
 <div class="card">
 
-<h3>Total Profit</h3>
+<h3>
+Total Profit
+</h3>
 
 <p>
-₹ <span id="profitAmount">0</span>
+₹ <span id="profitAmount">
+0
+</span>
 </p>
 
 </div>
@@ -1204,46 +1548,39 @@ onclick="addSupplier()">
 </section>
 
 
+<!-- ==================================================
+REPORTS
+================================================== -->
 
-<!-- ================= REPORTS ================= -->
+<section
+id="reports"
+class="section">
 
-<section id="reports" class="section">
 
 <div class="section-title">
 
-<h2>📈 Reports</h2>
+<h2>
+📈 Reports
+</h2>
 
-<p>System Summary</p>
+<p>
+System Summary
+</p>
 
 </div>
 
 
 <div class="cards">
 
-<div class="card">
-
-<h3>Farmers</h3>
-
-<p id="reportFarmers">0</p>
-
-</div>
-
 
 <div class="card">
 
-<h3>Products</h3>
+<h3>
+Farmers
+</h3>
 
-<p id="reportProducts">0</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>Total Sales</h3>
-
-<p>
-₹ <span id="reportSales">0</span>
+<p id="reportFarmers">
+0
 </p>
 
 </div>
@@ -1251,10 +1588,42 @@ onclick="addSupplier()">
 
 <div class="card">
 
-<h3>Total Profit</h3>
+<h3>
+Products
+</h3>
+
+<p id="reportProducts">
+0
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Total Sales
+</h3>
 
 <p>
-₹ <span id="reportProfit">0</span>
+₹ <span id="reportSales">
+0
+</span>
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Total Profit
+</h3>
+
+<p>
+₹ <span id="reportProfit">
+0
+</span>
 </p>
 
 </div>
@@ -1264,9 +1633,12 @@ onclick="addSupplier()">
 
 <div class="box">
 
-<h3>📋 Complete Summary</h3>
+<h3>
+📋 Complete Summary
+</h3>
 
 <br>
+
 
 <p>
 👨‍🌾 Farmers:
@@ -1275,12 +1647,14 @@ onclick="addSupplier()">
 
 <br>
 
+
 <p>
 🌱 Products:
 <b id="summaryProducts">0</b>
 </p>
 
 <br>
+
 
 <p>
 📦 Current Stock:
@@ -1289,6 +1663,7 @@ onclick="addSupplier()">
 
 <br>
 
+
 <p>
 🧾 Sales:
 ₹ <b id="summarySales">0</b>
@@ -1296,12 +1671,14 @@ onclick="addSupplier()">
 
 <br>
 
+
 <p>
 💰 Profit:
 ₹ <b id="summaryProfit">0</b>
 </p>
 
 <br>
+
 
 <button
 class="btn blue"
@@ -1337,33 +1714,52 @@ onclick="resetAllData()">
 </footer>
 
 
-
 <script>
 
-/* ==========================================
+/* ==================================================
    DATA
-========================================== */
+================================================== */
 
 let farmers =
-JSON.parse(localStorage.getItem("ksk_farmers")) || [];
+JSON.parse(
+localStorage.getItem("ksk_farmers")
+) || [];
+
 
 let products =
-JSON.parse(localStorage.getItem("ksk_products")) || [];
+JSON.parse(
+localStorage.getItem("ksk_products")
+) || [];
+
 
 let suppliers =
-JSON.parse(localStorage.getItem("ksk_suppliers")) || [];
+JSON.parse(
+localStorage.getItem("ksk_suppliers")
+) || [];
+
 
 let sales =
-JSON.parse(localStorage.getItem("ksk_sales")) || [];
+JSON.parse(
+localStorage.getItem("ksk_sales")
+) || [];
+
+
+/*
+   Temporary Sale Cart
+   एका Bill मध्ये अनेक products
+*/
+
+let saleCart = [];
 
 
 let editingFarmerId = null;
+
 let editingProductId = null;
 
 
-/* ==========================================
+/* ==================================================
    SAVE DATA
-========================================== */
+================================================== */
 
 function saveData(){
 
@@ -1386,54 +1782,78 @@ function saveData(){
         "ksk_sales",
         JSON.stringify(sales)
     );
+
 }
 
 
-/* ==========================================
+/* ==================================================
    NAVIGATION
-========================================== */
+================================================== */
 
 function showSection(id,button){
 
-    document.querySelectorAll(".section")
-    .forEach(s=>s.classList.remove("active"));
+    document
+    .querySelectorAll(".section")
+    .forEach(s=>{
+        s.classList.remove("active");
+    });
 
-    document.getElementById(id)
+
+    document
+    .getElementById(id)
     .classList.add("active");
 
 
-    document.querySelectorAll(".sidebar button")
-    .forEach(b=>b.classList.remove("active"));
+    document
+    .querySelectorAll(".sidebar button")
+    .forEach(b=>{
+        b.classList.remove("active");
+    });
+
 
     button.classList.add("active");
 
 
     updateAll();
+
 }
 
 
-/* ==========================================
+/* ==================================================
    FARMER
-========================================== */
+================================================== */
 
 function saveFarmer(){
 
     let name =
-    document.getElementById("farmerName").value.trim();
+    document
+    .getElementById("farmerName")
+    .value.trim();
+
 
     let mobile =
-    document.getElementById("farmerMobile").value.trim();
+    document
+    .getElementById("farmerMobile")
+    .value.trim();
+
 
     let village =
-    document.getElementById("farmerVillage").value.trim();
+    document
+    .getElementById("farmerVillage")
+    .value.trim();
+
 
     let land =
-    document.getElementById("farmerLand").value;
+    document
+    .getElementById("farmerLand")
+    .value;
 
 
     if(!name || !mobile || !village){
 
-        alert("कृपया Farmer ची सर्व माहिती भरा.");
+        alert(
+            "कृपया Farmer ची सर्व माहिती भरा."
+        );
 
         return;
     }
@@ -1442,19 +1862,27 @@ function saveFarmer(){
     if(editingFarmerId){
 
         let farmer =
-        farmers.find(f=>f.id===editingFarmerId);
+        farmers.find(
+            f=>f.id===editingFarmerId
+        );
 
-        farmer.name=name;
-        farmer.mobile=mobile;
-        farmer.village=village;
-        farmer.land=land;
 
-        alert("Farmer successfully updated.");
+        if(farmer){
 
-        editingFarmerId=null;
+            farmer.name = name;
 
-        document.getElementById("farmerSaveBtn")
-        .innerText="➕ Add Farmer";
+            farmer.mobile = mobile;
+
+            farmer.village = village;
+
+            farmer.land = land;
+
+        }
+
+
+        alert(
+            "Farmer successfully updated."
+        );
 
     }
 
@@ -1464,19 +1892,25 @@ function saveFarmer(){
 
             id:Date.now(),
 
-            name,
+            name:name,
 
-            mobile,
+            mobile:mobile,
 
-            village,
+            village:village,
 
-            land
+            land:land
 
         });
 
-        alert("Farmer successfully added.");
+
+        alert(
+            "Farmer successfully added."
+        );
 
     }
+
+
+    editingFarmerId = null;
 
 
     saveData();
@@ -1484,77 +1918,119 @@ function saveFarmer(){
     clearFarmerForm();
 
     updateAll();
+
 }
 
 
 function editFarmer(id){
 
     let farmer =
-    farmers.find(f=>f.id===id);
+    farmers.find(
+        f=>f.id===id
+    );
 
-    if(!farmer) return;
+
+    if(!farmer)
+        return;
 
 
-    document.getElementById("farmerName")
+    document
+    .getElementById("farmerName")
     .value=farmer.name;
 
-    document.getElementById("farmerMobile")
+
+    document
+    .getElementById("farmerMobile")
     .value=farmer.mobile;
 
-    document.getElementById("farmerVillage")
+
+    document
+    .getElementById("farmerVillage")
     .value=farmer.village;
 
-    document.getElementById("farmerLand")
+
+    document
+    .getElementById("farmerLand")
     .value=farmer.land;
 
 
     editingFarmerId=id;
 
 
-    document.getElementById("farmerSaveBtn")
-    .innerText="✏️ Update Farmer";
+    document
+    .getElementById("farmerSaveBtn")
+    .innerText=
+    "✏️ Update Farmer";
 
 
-    document.getElementById("farmerName")
+    document
+    .getElementById("farmerName")
     .focus();
+
 }
 
 
 function deleteFarmer(id){
 
-    if(!confirm("हा Farmer delete करायचा आहे का?"))
-    return;
+    if(!confirm(
+        "हा Farmer delete करायचा आहे का?"
+    ))
+        return;
 
 
     farmers =
-    farmers.filter(f=>f.id!==id);
+    farmers.filter(
+        f=>f.id!==id
+    );
 
 
     saveData();
 
     updateAll();
+
 }
 
 
 function clearFarmerForm(){
 
-    document.getElementById("farmerName").value="";
-    document.getElementById("farmerMobile").value="";
-    document.getElementById("farmerVillage").value="";
-    document.getElementById("farmerLand").value="";
+    document
+    .getElementById("farmerName")
+    .value="";
+
+
+    document
+    .getElementById("farmerMobile")
+    .value="";
+
+
+    document
+    .getElementById("farmerVillage")
+    .value="";
+
+
+    document
+    .getElementById("farmerLand")
+    .value="";
+
 
     editingFarmerId=null;
 
-    document.getElementById("farmerSaveBtn")
-    .innerText="➕ Add Farmer";
+
+    document
+    .getElementById("farmerSaveBtn")
+    .innerText=
+    "➕ Add Farmer";
+
 }
 
 
 function displayFarmers(){
 
     let search =
-    document.getElementById("farmerSearch")
-    .value.toLowerCase();
+    document
+    .getElementById("farmerSearch")
+    .value
+    .toLowerCase();
 
 
     let html="";
@@ -1563,16 +2039,25 @@ function displayFarmers(){
     farmers
     .filter(f=>
 
-        f.name.toLowerCase().includes(search) ||
+        String(f.name)
+        .toLowerCase()
+        .includes(search)
 
-        f.mobile.includes(search) ||
+        ||
 
-        f.village.toLowerCase().includes(search)
+        String(f.mobile)
+        .includes(search)
+
+        ||
+
+        String(f.village)
+        .toLowerCase()
+        .includes(search)
 
     )
     .forEach((f,index)=>{
 
-        html+=`
+        html += `
 
         <tr>
 
@@ -1584,7 +2069,9 @@ function displayFarmers(){
 
         <td>${f.village}</td>
 
-        <td>${f.land || 0} Acre</td>
+        <td>
+        ${f.land || 0} Acre
+        </td>
 
         <td>
 
@@ -1595,6 +2082,7 @@ function displayFarmers(){
         Edit
 
         </button>
+
 
         <button
         class="btn red"
@@ -1613,51 +2101,102 @@ function displayFarmers(){
     });
 
 
-    document.getElementById("farmerTable")
-    .innerHTML=html;
+    document
+    .getElementById("farmerTable")
+    .innerHTML =
+    html ||
+
+    `<tr>
+    <td colspan="6"
+    class="empty">
+    No Farmers Found
+    </td>
+    </tr>`;
+
 }
 
 
-/* ==========================================
+/* ==================================================
    PRODUCT
-========================================== */
+================================================== */
 
 function saveProduct(){
 
     let name =
-    document.getElementById("productName")
+    document
+    .getElementById("productName")
     .value.trim();
+
 
     let category =
-    document.getElementById("productCategory")
+    document
+    .getElementById("productCategory")
     .value;
 
+
     let company =
-    document.getElementById("productCompany")
+    document
+    .getElementById("productCompany")
     .value.trim();
 
+
     let qty =
-    Number(document.getElementById("productQty").value);
+    Number(
+        document
+        .getElementById("productQty")
+        .value
+    );
+
 
     let unit =
-    document.getElementById("productUnit").value;
+    document
+    .getElementById("productUnit")
+    .value;
+
 
     let purchase =
-    Number(document.getElementById("productPurchase").value);
+    Number(
+        document
+        .getElementById("productPurchase")
+        .value
+    );
+
 
     let selling =
-    Number(document.getElementById("productSelling").value);
+    Number(
+        document
+        .getElementById("productSelling")
+        .value
+    );
+
 
     let batch =
-    document.getElementById("productBatch").value.trim();
+    document
+    .getElementById("productBatch")
+    .value.trim();
+
 
     let expiry =
-    document.getElementById("productExpiry").value;
+    document
+    .getElementById("productExpiry")
+    .value;
 
 
-    if(!name || !category || qty<=0){
+    if(!name || !category){
 
-        alert("Product, Category आणि Quantity भरा.");
+        alert(
+            "Product आणि Category भरा."
+        );
+
+        return;
+    }
+
+
+    if(qty < 0){
+
+        alert(
+            "Quantity चुकीची आहे."
+        );
 
         return;
     }
@@ -1666,33 +2205,40 @@ function saveProduct(){
     if(editingProductId){
 
         let product =
-        products.find(p=>p.id===editingProductId);
+        products.find(
+            p=>p.id===editingProductId
+        );
 
 
-        product.name=name;
-        product.category=category;
-        product.company=company;
-        product.unit=unit;
-        product.purchase=purchase;
-        product.selling=selling;
-        product.batch=batch;
-        product.expiry=expiry;
+        if(product){
+
+            product.name=name;
+
+            product.category=category;
+
+            product.company=company;
+
+            product.unit=unit;
+
+            product.purchase=purchase;
+
+            product.selling=selling;
+
+            product.batch=batch;
+
+            product.expiry=expiry;
+
+            /*
+              Existing stock quantity
+              Edit केल्यावर बदलत नाही.
+            */
+
+        }
 
 
-        /*
-        Edit करताना stock quantity
-        बदलणार नाही.
-        Stock बदलण्यासाठी Stock In वापरा.
-        */
-
-
-        alert("Product successfully updated.");
-
-
-        editingProductId=null;
-
-        document.getElementById("productSaveBtn")
-        .innerText="➕ Add Product";
+        alert(
+            "Product successfully updated."
+        );
 
     }
 
@@ -1702,37 +2248,42 @@ function saveProduct(){
 
             id:Date.now(),
 
-            name,
+            name:name,
 
-            category,
+            category:category,
 
-            company,
+            company:company,
 
-            qty,
+            qty:qty,
 
-            unit,
+            unit:unit,
 
-            purchase,
+            purchase:purchase,
 
-            selling,
+            selling:selling,
 
-            batch,
+            batch:batch,
 
-            expiry
+            expiry:expiry
 
         });
 
 
         alert(
+
             name+
             " - "+
             qty+
             " "+
             unit+
             " Stock मध्ये add झाला."
+
         );
 
     }
+
+
+    editingProductId=null;
 
 
     saveData();
@@ -1740,111 +2291,186 @@ function saveProduct(){
     clearProductForm();
 
     updateAll();
+
 }
 
 
 function editProduct(id){
 
     let product =
-    products.find(p=>p.id===id);
+    products.find(
+        p=>p.id===id
+    );
 
-    if(!product) return;
+
+    if(!product)
+        return;
 
 
-    document.getElementById("productName")
+    document
+    .getElementById("productName")
     .value=product.name;
 
-    document.getElementById("productCategory")
+
+    document
+    .getElementById("productCategory")
     .value=product.category;
 
-    document.getElementById("productCompany")
+
+    document
+    .getElementById("productCompany")
     .value=product.company;
 
-    /*
-    Quantity input मध्ये सध्याचा stock
-    फक्त display म्हणून दाखवतो.
-    */
 
-    document.getElementById("productQty")
+    document
+    .getElementById("productQty")
     .value=product.qty;
 
-    document.getElementById("productUnit")
+
+    document
+    .getElementById("productUnit")
     .value=product.unit;
 
-    document.getElementById("productPurchase")
+
+    document
+    .getElementById("productPurchase")
     .value=product.purchase;
 
-    document.getElementById("productSelling")
+
+    document
+    .getElementById("productSelling")
     .value=product.selling;
 
-    document.getElementById("productBatch")
+
+    document
+    .getElementById("productBatch")
     .value=product.batch;
 
-    document.getElementById("productExpiry")
+
+    document
+    .getElementById("productExpiry")
     .value=product.expiry;
 
 
     editingProductId=id;
 
 
-    document.getElementById("productSaveBtn")
-    .innerText="✏️ Update Product";
+    document
+    .getElementById("productSaveBtn")
+    .innerText=
+    "✏️ Update Product";
 
 
-    document.getElementById("productName")
+    document
+    .getElementById("productName")
     .focus();
+
 }
 
 
 function deleteProduct(id){
 
     let product =
-    products.find(p=>p.id===id);
+    products.find(
+        p=>p.id===id
+    );
 
 
-    if(!product) return;
+    if(!product)
+        return;
 
 
     if(!confirm(
         product.name+
         " delete करायचा आहे का?"
     ))
-    return;
+        return;
 
 
     products =
-    products.filter(p=>p.id!==id);
+    products.filter(
+        p=>p.id!==id
+    );
+
+
+    /*
+       जर cart मध्ये product असेल
+       तर तोसुद्धा remove
+    */
+
+    saleCart =
+    saleCart.filter(
+        item=>item.productId!==id
+    );
 
 
     saveData();
 
     updateAll();
+
 }
 
 
 function clearProductForm(){
 
-    document.getElementById("productName").value="";
-    document.getElementById("productCategory").value="";
-    document.getElementById("productCompany").value="";
-    document.getElementById("productQty").value="";
-    document.getElementById("productPurchase").value="";
-    document.getElementById("productSelling").value="";
-    document.getElementById("productBatch").value="";
-    document.getElementById("productExpiry").value="";
+    document
+    .getElementById("productName")
+    .value="";
+
+
+    document
+    .getElementById("productCategory")
+    .value="";
+
+
+    document
+    .getElementById("productCompany")
+    .value="";
+
+
+    document
+    .getElementById("productQty")
+    .value="";
+
+
+    document
+    .getElementById("productPurchase")
+    .value="";
+
+
+    document
+    .getElementById("productSelling")
+    .value="";
+
+
+    document
+    .getElementById("productBatch")
+    .value="";
+
+
+    document
+    .getElementById("productExpiry")
+    .value="";
+
 
     editingProductId=null;
 
-    document.getElementById("productSaveBtn")
-    .innerText="➕ Add Product";
+
+    document
+    .getElementById("productSaveBtn")
+    .innerText=
+    "➕ Add Product";
+
 }
 
 
 function displayProducts(){
 
     let search =
-    document.getElementById("productSearch")
-    .value.toLowerCase();
+    document
+    .getElementById("productSearch")
+    .value
+    .toLowerCase();
 
 
     let html="";
@@ -1853,22 +2479,42 @@ function displayProducts(){
     products
     .filter(p=>
 
-        p.name.toLowerCase().includes(search) ||
+        String(p.name)
+        .toLowerCase()
+        .includes(search)
 
-        p.category.toLowerCase().includes(search) ||
+        ||
 
-        p.company.toLowerCase().includes(search)
+        String(p.category)
+        .toLowerCase()
+        .includes(search)
+
+        ||
+
+        String(p.company)
+        .toLowerCase()
+        .includes(search)
 
     )
     .forEach((p,index)=>{
 
         let status =
-        p.qty<=5
-        ? `<span class="low">Low Stock</span>`
-        : `<span class="normal">Available</span>`;
+        Number(p.qty)<=5
+
+        ?
+
+        `<span class="low">
+        ⚠ Low Stock
+        </span>`
+
+        :
+
+        `<span class="normal">
+        ✓ Available
+        </span>`;
 
 
-        html+=`
+        html += `
 
         <tr>
 
@@ -1886,9 +2532,13 @@ function displayProducts(){
         <b>${p.qty} ${p.unit}</b>
         </td>
 
-        <td>₹${p.purchase}</td>
+        <td>
+        ₹${Number(p.purchase).toFixed(2)}
+        </td>
 
-        <td>₹${p.selling}</td>
+        <td>
+        ₹${Number(p.selling).toFixed(2)}
+        </td>
 
         <td>
 
@@ -1917,39 +2567,54 @@ function displayProducts(){
     });
 
 
-    document.getElementById("productTable")
-    .innerHTML=html;
+    document
+    .getElementById("productTable")
+    .innerHTML =
+    html ||
+
+    `<tr>
+    <td colspan="8"
+    class="empty">
+    No Products Found
+    </td>
+    </tr>`;
+
 }
 
 
-/* ==========================================
-   STOCK IN
-========================================== */
+/* ==================================================
+   STOCK
+================================================== */
 
 function loadStockProducts(){
 
     let select =
-    document.getElementById("stockProduct");
+    document
+    .getElementById("stockProduct");
 
 
     select.innerHTML =
-    `<option value="">Select Product</option>`;
+    `<option value="">
+    Select Product
+    </option>`;
 
 
     products.forEach(p=>{
 
-        select.innerHTML+=`
+        select.innerHTML += `
 
         <option value="${p.id}">
 
         ${p.name}
-        - Current: ${p.qty} ${p.unit}
+        - Current:
+        ${p.qty} ${p.unit}
 
         </option>
 
         `;
 
     });
+
 }
 
 
@@ -1957,23 +2622,31 @@ function stockIn(){
 
     let productId =
     Number(
-        document.getElementById("stockProduct").value
+        document
+        .getElementById("stockProduct")
+        .value
     );
 
 
     let qty =
     Number(
-        document.getElementById("stockQty").value
+        document
+        .getElementById("stockQty")
+        .value
     );
 
 
     let product =
-    products.find(p=>p.id===productId);
+    products.find(
+        p=>p.id===productId
+    );
 
 
     if(!product){
 
-        alert("Product select करा.");
+        alert(
+            "Product select करा."
+        );
 
         return;
     }
@@ -1981,7 +2654,9 @@ function stockIn(){
 
     if(qty<=0){
 
-        alert("Valid quantity टाका.");
+        alert(
+            "Valid quantity टाका."
+        );
 
         return;
     }
@@ -1993,20 +2668,26 @@ function stockIn(){
 
     saveData();
 
-    document.getElementById("stockQty").value="";
+
+    document
+    .getElementById("stockQty")
+    .value="";
 
 
     alert(
-        "Stock Updated!\n"+
+
+        "Stock Updated!\n\n"+
         product.name+
         " = "+
         product.qty+
         " "+
         product.unit
+
     );
 
 
     updateAll();
+
 }
 
 
@@ -2018,14 +2699,22 @@ function displayStock(){
     products.forEach(p=>{
 
         let status =
-        p.qty<=5
+        Number(p.qty)<=5
 
-        ? `<span class="low">⚠ Low Stock</span>`
+        ?
 
-        : `<span class="normal">✓ Available</span>`;
+        `<span class="low">
+        ⚠ Low Stock
+        </span>`
+
+        :
+
+        `<span class="normal">
+        ✓ Available
+        </span>`;
 
 
-        html+=`
+        html += `
 
         <tr>
 
@@ -2039,9 +2728,13 @@ function displayStock(){
 
         <td>${p.unit}</td>
 
-        <td>₹${p.purchase}</td>
+        <td>
+        ₹${Number(p.purchase).toFixed(2)}
+        </td>
 
-        <td>₹${p.selling}</td>
+        <td>
+        ₹${Number(p.selling).toFixed(2)}
+        </td>
 
         <td>${status}</td>
 
@@ -2052,31 +2745,51 @@ function displayStock(){
     });
 
 
-    document.getElementById("stockTable")
-    .innerHTML=html;
+    document
+    .getElementById("stockTable")
+    .innerHTML =
+    html ||
+
+    `<tr>
+    <td colspan="7"
+    class="empty">
+    No Stock Available
+    </td>
+    </tr>`;
+
 }
 
 
-/* ==========================================
-   SALES
-========================================== */
+/* ==================================================
+   SALES OPTIONS
+================================================== */
 
 function loadSaleOptions(){
 
     let farmerSelect =
-    document.getElementById("saleFarmer");
+    document
+    .getElementById("saleFarmer");
+
+
+    let selectedFarmer =
+    farmerSelect.value;
 
 
     farmerSelect.innerHTML =
-    `<option value="">Select Farmer</option>`;
+    `<option value="">
+    Select Farmer
+    </option>`;
 
 
     farmers.forEach(f=>{
 
-        farmerSelect.innerHTML+=`
+        farmerSelect.innerHTML += `
 
         <option value="${f.id}">
-        ${f.name} - ${f.mobile}
+
+        ${f.name}
+        - ${f.mobile}
+
         </option>
 
         `;
@@ -2084,29 +2797,42 @@ function loadSaleOptions(){
     });
 
 
+    if(selectedFarmer){
+
+        farmerSelect.value =
+        selectedFarmer;
+
+    }
+
+
     let productSelect =
-    document.getElementById("saleProduct");
+    document
+    .getElementById("saleProduct");
 
 
-    let current =
+    let selectedProduct =
     productSelect.value;
 
 
     productSelect.innerHTML =
-    `<option value="">Select Product</option>`;
+    `<option value="">
+    Select Product
+    </option>`;
 
 
     products.forEach(p=>{
 
-        if(p.qty>0){
+        if(Number(p.qty)>0){
 
-            productSelect.innerHTML+=`
+            productSelect.innerHTML += `
 
             <option value="${p.id}">
 
             ${p.name}
-            - ${p.qty} ${p.unit}
-            - ₹${p.selling}
+            -
+            ${p.qty} ${p.unit}
+            -
+            ₹${Number(p.selling).toFixed(2)}
 
             </option>
 
@@ -2117,34 +2843,47 @@ function loadSaleOptions(){
     });
 
 
-    if(current){
+    if(selectedProduct){
 
-        productSelect.value=current;
+        productSelect.value =
+        selectedProduct;
 
     }
+
 }
 
+
+/* ==================================================
+   SET SALE PRICE
+================================================== */
 
 function setSalePrice(){
 
     let id =
     Number(
-        document.getElementById("saleProduct").value
+        document
+        .getElementById("saleProduct")
+        .value
     );
 
 
     let product =
-    products.find(p=>p.id===id);
+    products.find(
+        p=>p.id===id
+    );
 
 
     if(product){
 
-        document.getElementById("salePrice")
-        .value=product.selling;
+        document
+        .getElementById("salePrice")
+        .value =
+        product.selling;
 
 
-        document.getElementById("availableStock")
-        .value=
+        document
+        .getElementById("availableStock")
+        .value =
         product.qty+
         " "+
         product.unit;
@@ -2153,95 +2892,61 @@ function setSalePrice(){
 
     else{
 
-        document.getElementById("salePrice").value="";
+        document
+        .getElementById("salePrice")
+        .value="";
 
-        document.getElementById("availableStock").value="";
+
+        document
+        .getElementById("availableStock")
+        .value="";
 
     }
 
-
-    calculateSale();
 }
 
 
-function calculateSale(){
+/* ==================================================
+   ADD PRODUCT TO SALE CART
+================================================== */
 
-    let qty =
-    Number(
-        document.getElementById("saleQty").value
-    );
-
-
-    let price =
-    Number(
-        document.getElementById("salePrice").value
-    );
-
-
-    let discount =
-    Number(
-        document.getElementById("saleDiscount").value
-    );
-
-
-    let total =
-    (qty*price)-discount;
-
-
-    if(total<0)
-    total=0;
-
-
-    document.getElementById("saleTotal")
-    .value=total.toFixed(2);
-}
-
-
-function createSale(){
-
-    let farmerId =
-    Number(
-        document.getElementById("saleFarmer").value
-    );
-
+function addProductToCart(){
 
     let productId =
     Number(
-        document.getElementById("saleProduct").value
+        document
+        .getElementById("saleProduct")
+        .value
     );
 
 
     let qty =
     Number(
-        document.getElementById("saleQty").value
+        document
+        .getElementById("saleQty")
+        .value
     );
 
 
     let discount =
     Number(
-        document.getElementById("saleDiscount").value
-    );
-
-
-    let farmer =
-    farmers.find(f=>f.id===farmerId);
+        document
+        .getElementById("saleDiscount")
+        .value
+    ) || 0;
 
 
     let product =
-    products.find(p=>p.id===productId);
-
-
-    if(!farmer){
-
-        alert("Farmer select करा.");
-
-        return;
-    }
+    products.find(
+        p=>p.id===productId
+    );
 
 
     if(!product){
 
-        alert("Product select करा.");
+        alert(
+            "Product select करा."
+        );
 
         return;
     }
@@ -2249,157 +2954,677 @@ function createSale(){
 
     if(qty<=0){
 
-        alert("Sale quantity टाका.");
-
-        return;
-    }
-
-
-    /*
-    IMPORTANT:
-    Available Stock पेक्षा जास्त
-    माल विकता येणार नाही.
-    */
-
-    if(qty>Number(product.qty)){
-
         alert(
-            "❌ Insufficient Stock!\n\n"+
-            "Available Stock: "+
-            product.qty+
-            " "+
-            product.unit
+            "Sale Quantity टाका."
         );
 
         return;
     }
 
 
-    let total =
-    (qty*product.selling)-discount;
+    if(discount<0){
 
-
-    if(total<0){
-
-        alert("Discount total पेक्षा जास्त असू शकत नाही.");
+        alert(
+            "Discount चुकीचा आहे."
+        );
 
         return;
     }
 
 
-    let cost =
-    qty*product.purchase;
+    /*
+       Check if product already
+       exists in cart
+    */
+
+    let existing =
+    saleCart.find(
+        item=>item.productId===productId
+    );
 
 
-    let profit =
-    total-cost;
+    let alreadyInCart =
+    existing
+    ?
+    Number(existing.qty)
+    :
+    0;
+
+
+    let requested =
+    alreadyInCart + qty;
 
 
     /*
-    ⭐ MAIN STOCK LOGIC ⭐
-
-    विकलेली quantity automatic minus
+       Stock check
     */
 
-    product.qty =
-    Number(product.qty)-qty;
+    if(requested > Number(product.qty)){
+
+        alert(
+
+            "❌ Insufficient Stock!\n\n"+
+            "Product: "+
+            product.name+
+            "\nAvailable: "+
+            product.qty+
+            " "+
+            product.unit+
+            "\nRequired: "+
+            requested+
+            " "+
+            product.unit
+
+        );
+
+        return;
+    }
 
 
-    let sale={
+    if(existing){
 
-        id:Date.now(),
-
-        date:new Date()
-        .toLocaleDateString("en-IN"),
-
-        farmerId:farmer.id,
-
-        farmerName:farmer.name,
-
-        productId:product.id,
-
-        productName:product.name,
-
-        qty:qty,
-
-        unit:product.unit,
-
-        price:product.selling,
-
-        discount:discount,
-
-        total:total,
-
-        cost:cost,
-
-        profit:profit
-
-    };
+        existing.qty =
+        Number(existing.qty)+qty;
 
 
-    sales.push(sale);
+        existing.discount =
+        Number(existing.discount)+discount;
 
+    }
+
+    else{
+
+        saleCart.push({
+
+            productId:product.id,
+
+            productName:product.name,
+
+            qty:qty,
+
+            unit:product.unit,
+
+            price:Number(product.selling),
+
+            purchase:Number(product.purchase),
+
+            discount:discount
+
+        });
+
+    }
+
+
+    /*
+       Clear input
+    */
+
+    document
+    .getElementById("saleQty")
+    .value="";
+
+
+    document
+    .getElementById("saleDiscount")
+    .value="0";
+
+
+    document
+    .getElementById("saleProduct")
+    .value="";
+
+
+    document
+    .getElementById("salePrice")
+    .value="";
+
+
+    document
+    .getElementById("availableStock")
+    .value="";
+
+
+    displaySaleCart();
+
+}
+
+
+/* ==================================================
+   DISPLAY SALE CART
+================================================== */
+
+function displaySaleCart(){
+
+    let table =
+    document
+    .getElementById("saleCartTable");
+
+
+    let total =
+    0;
+
+
+    if(saleCart.length===0){
+
+        table.innerHTML = `
+
+        <tr>
+
+        <td
+        colspan="7"
+        class="empty">
+
+        Cart मध्ये अजून Product नाही.
+
+        </td>
+
+        </tr>
+
+        `;
+
+
+        document
+        .getElementById("cartGrandTotal")
+        .innerText="0.00";
+
+
+        return;
+
+    }
+
+
+    let html="";
+
+
+    saleCart.forEach(
+    (item,index)=>{
+
+
+        let subtotal =
+        (
+            Number(item.qty) *
+            Number(item.price)
+        )
+        -
+        Number(item.discount);
+
+
+        if(subtotal<0)
+            subtotal=0;
+
+
+        total += subtotal;
+
+
+        html += `
+
+        <tr>
+
+        <td>
+        <b>${item.productName}</b>
+        </td>
+
+        <td>
+        ${item.qty}
+        </td>
+
+        <td>
+        ${item.unit}
+        </td>
+
+        <td>
+        ₹${Number(item.price).toFixed(2)}
+        </td>
+
+        <td>
+        ₹${Number(item.discount).toFixed(2)}
+        </td>
+
+        <td>
+        <b>
+        ₹${subtotal.toFixed(2)}
+        </b>
+        </td>
+
+        <td>
+
+        <button
+        class="btn red"
+        onclick="removeFromSaleCart(${index})">
+
+        Remove
+
+        </button>
+
+        </td>
+
+        </tr>
+
+        `;
+
+    });
+
+
+    table.innerHTML=html;
+
+
+    document
+    .getElementById("cartGrandTotal")
+    .innerText=
+    total.toFixed(2);
+
+}
+
+
+/* ==================================================
+   REMOVE FROM CART
+================================================== */
+
+function removeFromSaleCart(index){
+
+    saleCart.splice(index,1);
+
+    displaySaleCart();
+
+}
+
+
+/* ==================================================
+   CLEAR SALE CART
+================================================== */
+
+function clearSaleCart(){
+
+    if(saleCart.length===0)
+        return;
+
+
+    if(!confirm(
+        "Cart मधील सर्व Products काढायचे आहेत का?"
+    ))
+        return;
+
+
+    saleCart=[];
+
+
+    displaySaleCart();
+
+}
+
+
+/* ==================================================
+   CREATE MULTI PRODUCT SALE
+================================================== */
+
+function createMultiProductSale(){
+
+    let farmerId =
+    Number(
+        document
+        .getElementById("saleFarmer")
+        .value
+    );
+
+
+    let farmer =
+    farmers.find(
+        f=>f.id===farmerId
+    );
+
+
+    if(!farmer){
+
+        alert(
+            "Farmer select करा."
+        );
+
+        return;
+    }
+
+
+    if(saleCart.length===0){
+
+        alert(
+            "कृपया कमीत कमी एक Product Add करा."
+        );
+
+        return;
+    }
+
+
+    /*
+       FINAL STOCK CHECK
+    */
+
+    for(let item of saleCart){
+
+        let product =
+        products.find(
+            p=>p.id===item.productId
+        );
+
+
+        if(!product){
+
+            alert(
+                "Product सापडला नाही."
+            );
+
+            return;
+        }
+
+
+        if(
+            Number(item.qty)
+            >
+            Number(product.qty)
+        ){
+
+            alert(
+
+                "❌ Insufficient Stock!\n\n"+
+                item.productName+
+                "\nAvailable: "+
+                product.qty+
+                " "+
+                product.unit+
+                "\nRequired: "+
+                item.qty+
+                " "+
+                item.unit
+
+            );
+
+            return;
+        }
+
+
+        let itemTotal =
+        (
+            Number(item.qty) *
+            Number(item.price)
+        )
+        -
+        Number(item.discount);
+
+
+        if(itemTotal<0){
+
+            alert(
+
+                "❌ "+
+                item.productName+
+                " चा Discount त्याच्या Total पेक्षा जास्त आहे."
+
+            );
+
+            return;
+        }
+
+    }
+
+
+    let billItems=[];
+
+    let grandTotal=0;
+
+    let grandCost=0;
+
+    let grandProfit=0;
+
+
+    /*
+       प्रत्येक Product process
+    */
+
+    saleCart.forEach(item=>{
+
+        let product =
+        products.find(
+            p=>p.id===item.productId
+        );
+
+
+        let subtotal =
+        (
+            Number(item.qty) *
+            Number(item.price)
+        )
+        -
+        Number(item.discount);
+
+
+        let cost =
+        Number(item.qty) *
+        Number(item.purchase);
+
+
+        let profit =
+        subtotal-cost;
+
+
+        /*
+           ⭐ STOCK AUTOMATIC MINUS
+        */
+
+        product.qty =
+        Number(product.qty) -
+        Number(item.qty);
+
+
+        let sale={
+
+            id:
+            Date.now()+
+            Math.floor(
+                Math.random()*100000
+            ),
+
+            date:
+            new Date()
+            .toLocaleDateString("en-IN"),
+
+            farmerId:
+            farmer.id,
+
+            farmerName:
+            farmer.name,
+
+            productId:
+            product.id,
+
+            productName:
+            product.name,
+
+            qty:
+            Number(item.qty),
+
+            unit:
+            product.unit,
+
+            price:
+            Number(item.price),
+
+            discount:
+            Number(item.discount),
+
+            total:
+            subtotal,
+
+            cost:
+            cost,
+
+            profit:
+            profit
+
+        };
+
+
+        sales.push(sale);
+
+        billItems.push(sale);
+
+
+        grandTotal += subtotal;
+
+        grandCost += cost;
+
+        grandProfit += profit;
+
+    });
+
+
+    /*
+       Save
+    */
 
     saveData();
 
 
-    displayBill(sale);
+    /*
+       Bill display
+    */
 
+    displayMultiProductBill(
 
-    document.getElementById("saleQty")
-    .value="";
+        farmer,
 
-    document.getElementById("saleDiscount")
-    .value="0";
+        billItems,
 
+        grandTotal,
 
-    document.getElementById("saleTotal")
-    .value="";
+        grandCost,
+
+        grandProfit
+
+    );
 
 
     /*
-    Product पुन्हा select केल्यावर
-    updated stock दिसेल.
+       Clear cart
     */
+
+    saleCart=[];
+
+
+    displaySaleCart();
+
+
+    document
+    .getElementById("saleFarmer")
+    .value="";
+
 
     updateAll();
 
 
     alert(
-        "Sale Successful!\n\n"+
-        product.name+
-        "\nSold: "+
-        qty+
-        " "+
-        product.unit+
-        "\nRemaining Stock: "+
-        product.qty+
-        " "+
-        product.unit+
-        "\n\nProfit: ₹"+
-        profit.toFixed(2)
+
+        "✅ Sale Successful!\n\n"+
+        "Products: "+
+        billItems.length+
+        "\nTotal: ₹"+
+        grandTotal.toFixed(2)+
+        "\nProfit: ₹"+
+        grandProfit.toFixed(2)
+
     );
+
 }
 
 
-function displayBill(sale){
+/* ==================================================
+   MULTI PRODUCT BILL
+================================================== */
 
-    document.getElementById("billDetails")
-    .innerHTML=`
+function displayMultiProductBill(
+
+    farmer,
+    items,
+    grandTotal,
+    grandCost,
+    grandProfit
+
+){
+
+    let rows="";
+
+
+    items.forEach(item=>{
+
+        rows += `
+
+        <tr>
+
+        <td>
+        ${item.productName}
+        </td>
+
+        <td>
+        ${item.qty}
+        </td>
+
+        <td>
+        ${item.unit}
+        </td>
+
+        <td>
+        ₹${Number(item.price).toFixed(2)}
+        </td>
+
+        <td>
+        ₹${Number(item.discount).toFixed(2)}
+        </td>
+
+        <td>
+        ₹${Number(item.total).toFixed(2)}
+        </td>
+
+        </tr>
+
+        `;
+
+    });
+
+
+    document
+    .getElementById("billDetails")
+    .innerHTML = `
 
     <p>
+
     <b>Bill Date:</b>
-    ${sale.date}
+
+    ${new Date()
+    .toLocaleDateString("en-IN")}
+
     </p>
 
+
     <p>
+
     <b>Farmer:</b>
-    ${sale.farmerName}
+
+    ${farmer.name}
+
     </p>
+
+
+    <p>
+
+    <b>Mobile:</b>
+
+    ${farmer.mobile}
+
+    </p>
+
 
     <br>
 
-    <table style="min-width:100%">
+
+    <table
+    style="min-width:100%">
 
     <tr>
 
@@ -2411,82 +3636,103 @@ function displayBill(sale){
 
     <th>Price</th>
 
+    <th>Discount</th>
+
     <th>Total</th>
 
     </tr>
 
-
-    <tr>
-
-    <td>${sale.productName}</td>
-
-    <td>${sale.qty}</td>
-
-    <td>${sale.unit}</td>
-
-    <td>₹${sale.price}</td>
-
-    <td>₹${sale.total.toFixed(2)}</td>
-
-    </tr>
+    ${rows}
 
     </table>
 
 
-    <p style="text-align:right;margin-top:10px">
+    <div
+    style="
+    text-align:right;
+    margin-top:20px;
+    ">
 
-    Discount:
-    ₹${sale.discount.toFixed(2)}
+
+    <p>
+
+    <b>Total Cost:</b>
+
+    ₹${grandCost.toFixed(2)}
+
+    </p>
+
+
+    <p>
+
+    <b>Total Profit:</b>
+
+    ₹${grandProfit.toFixed(2)}
 
     </p>
 
 
     <div class="total">
 
-    Total:
-    ₹${sale.total.toFixed(2)}
+    Grand Total:
+    ₹${grandTotal.toFixed(2)}
+
+    </div>
+
 
     </div>
 
 
     <br>
 
-    <p style="text-align:center">
+
+    <p
+    style="text-align:center">
 
     धन्यवाद! पुन्हा भेट द्या.
 
     </p>
 
     `;
+
 }
 
 
-/* ==========================================
+/* ==================================================
    SUPPLIER
-========================================== */
+================================================== */
 
 function addSupplier(){
 
     let name =
-    document.getElementById("supplierName")
+    document
+    .getElementById("supplierName")
     .value.trim();
+
 
     let mobile =
-    document.getElementById("supplierMobile")
+    document
+    .getElementById("supplierMobile")
     .value.trim();
+
 
     let company =
-    document.getElementById("supplierCompany")
+    document
+    .getElementById("supplierCompany")
     .value.trim();
 
+
     let address =
-    document.getElementById("supplierAddress")
+    document
+    .getElementById("supplierAddress")
     .value.trim();
 
 
     if(!name || !mobile){
 
-        alert("Supplier Name आणि Mobile भरा.");
+        alert(
+            "Supplier Name आणि Mobile भरा."
+        );
 
         return;
     }
@@ -2496,13 +3742,13 @@ function addSupplier(){
 
         id:Date.now(),
 
-        name,
+        name:name,
 
-        mobile,
+        mobile:mobile,
 
-        company,
+        company:company,
 
-        address
+        address:address
 
     });
 
@@ -2510,16 +3756,33 @@ function addSupplier(){
     saveData();
 
 
-    document.getElementById("supplierName").value="";
-    document.getElementById("supplierMobile").value="";
-    document.getElementById("supplierCompany").value="";
-    document.getElementById("supplierAddress").value="";
+    document
+    .getElementById("supplierName")
+    .value="";
+
+
+    document
+    .getElementById("supplierMobile")
+    .value="";
+
+
+    document
+    .getElementById("supplierCompany")
+    .value="";
+
+
+    document
+    .getElementById("supplierAddress")
+    .value="";
 
 
     updateAll();
 
 
-    alert("Supplier added successfully.");
+    alert(
+        "Supplier added successfully."
+    );
+
 }
 
 
@@ -2528,9 +3791,10 @@ function displaySuppliers(){
     let html="";
 
 
-    suppliers.forEach((s,index)=>{
+    suppliers.forEach(
+    (s,index)=>{
 
-        html+=`
+        html += `
 
         <tr>
 
@@ -2540,9 +3804,13 @@ function displaySuppliers(){
 
         <td>${s.mobile}</td>
 
-        <td>${s.company || "-"}</td>
+        <td>
+        ${s.company || "-"}
+        </td>
 
-        <td>${s.address || "-"}</td>
+        <td>
+        ${s.address || "-"}
+        </td>
 
         <td>
 
@@ -2563,30 +3831,45 @@ function displaySuppliers(){
     });
 
 
-    document.getElementById("supplierTable")
-    .innerHTML=html;
+    document
+    .getElementById("supplierTable")
+    .innerHTML =
+    html ||
+
+    `<tr>
+    <td colspan="6"
+    class="empty">
+    No Suppliers Found
+    </td>
+    </tr>`;
+
 }
 
 
 function deleteSupplier(id){
 
-    if(!confirm("Supplier delete करायचा आहे का?"))
-    return;
+    if(!confirm(
+        "Supplier delete करायचा आहे का?"
+    ))
+        return;
 
 
     suppliers =
-    suppliers.filter(s=>s.id!==id);
+    suppliers.filter(
+        s=>s.id!==id
+    );
 
 
     saveData();
 
     updateAll();
+
 }
 
 
-/* ==========================================
+/* ==================================================
    PROFIT
-========================================== */
+================================================== */
 
 function displayProfit(){
 
@@ -2595,7 +3878,7 @@ function displayProfit(){
 
     sales.forEach(s=>{
 
-        html+=`
+        html += `
 
         <tr>
 
@@ -2605,14 +3888,22 @@ function displayProfit(){
 
         <td>${s.productName}</td>
 
-        <td>${s.qty} ${s.unit}</td>
-
-        <td>₹${s.total.toFixed(2)}</td>
-
-        <td>₹${s.cost.toFixed(2)}</td>
+        <td>
+        ${s.qty} ${s.unit}
+        </td>
 
         <td>
-        <b>₹${s.profit.toFixed(2)}</b>
+        ₹${Number(s.total).toFixed(2)}
+        </td>
+
+        <td>
+        ₹${Number(s.cost).toFixed(2)}
+        </td>
+
+        <td>
+        <b>
+        ₹${Number(s.profit).toFixed(2)}
+        </b>
         </td>
 
         </tr>
@@ -2622,216 +3913,301 @@ function displayProfit(){
     });
 
 
-    document.getElementById("profitTable")
-    .innerHTML=html;
+    document
+    .getElementById("profitTable")
+    .innerHTML =
+    html ||
+
+    `<tr>
+    <td colspan="7"
+    class="empty">
+    No Sales Found
+    </td>
+    </tr>`;
 
 
     let totalSales =
     sales.reduce(
-        (sum,s)=>sum+Number(s.total),
+        (sum,s)=>
+        sum+Number(s.total),
         0
     );
 
 
     let totalCost =
     sales.reduce(
-        (sum,s)=>sum+Number(s.cost),
+        (sum,s)=>
+        sum+Number(s.cost),
         0
     );
 
 
     let totalProfit =
     sales.reduce(
-        (sum,s)=>sum+Number(s.profit),
+        (sum,s)=>
+        sum+Number(s.profit),
         0
     );
 
 
-    document.getElementById("profitSales")
-    .innerText=totalSales.toFixed(2);
+    document
+    .getElementById("profitSales")
+    .innerText =
+    totalSales.toFixed(2);
 
 
-    document.getElementById("profitCost")
-    .innerText=totalCost.toFixed(2);
+    document
+    .getElementById("profitCost")
+    .innerText =
+    totalCost.toFixed(2);
 
 
-    document.getElementById("profitAmount")
-    .innerText=totalProfit.toFixed(2);
+    document
+    .getElementById("profitAmount")
+    .innerText =
+    totalProfit.toFixed(2);
+
 }
 
 
-/* ==========================================
+/* ==================================================
    DASHBOARD
-========================================== */
+================================================== */
 
 function updateDashboard(){
 
     let totalSales =
     sales.reduce(
-        (sum,s)=>sum+Number(s.total),
+        (sum,s)=>
+        sum+Number(s.total),
         0
     );
 
 
     let totalProfit =
     sales.reduce(
-        (sum,s)=>sum+Number(s.profit),
+        (sum,s)=>
+        sum+Number(s.profit),
         0
     );
 
 
     let totalStock =
     products.reduce(
-        (sum,p)=>sum+Number(p.qty),
+        (sum,p)=>
+        sum+Number(p.qty),
         0
     );
 
 
-    document.getElementById("dashFarmers")
-    .innerText=farmers.length;
+    document
+    .getElementById("dashFarmers")
+    .innerText =
+    farmers.length;
 
 
-    document.getElementById("dashProducts")
-    .innerText=products.length;
+    document
+    .getElementById("dashProducts")
+    .innerText =
+    products.length;
 
 
-    document.getElementById("dashStock")
-    .innerText=totalStock;
+    document
+    .getElementById("dashStock")
+    .innerText =
+    totalStock;
 
 
-    document.getElementById("dashSales")
-    .innerText=totalSales.toFixed(2);
+    document
+    .getElementById("dashSales")
+    .innerText =
+    totalSales.toFixed(2);
 
 
-    document.getElementById("dashProfit")
-    .innerText=totalProfit.toFixed(2);
+    document
+    .getElementById("dashProfit")
+    .innerText =
+    totalProfit.toFixed(2);
 
 
     let low =
-    products.filter(p=>Number(p.qty)<=5);
+    products.filter(
+        p=>Number(p.qty)<=5
+    );
 
 
     let lowBox =
-    document.getElementById("dashboardLowStock");
+    document
+    .getElementById("dashboardLowStock");
 
 
     if(low.length===0){
 
-        lowBox.innerHTML=
-        `<p class="normal">
+        lowBox.innerHTML = `
+
+        <p class="normal">
+
         ✓ सर्व products चा stock ठीक आहे.
-        </p>`;
+
+        </p>
+
+        `;
 
     }
 
     else{
 
-        lowBox.innerHTML=
-        `<div class="warning">
-        ⚠️ Low Stock: ${
-            low.map(
-                p=>p.name+
-                " ("+
-                p.qty+
-                " "+
-                p.unit+
-                ")"
-            ).join(", ")
-        }
-        </div>`;
+        lowBox.innerHTML = `
+
+        <div class="warning">
+
+        ⚠️ Low Stock:
+
+        ${low.map(
+            p=>
+            p.name+
+            " ("+
+            p.qty+
+            " "+
+            p.unit+
+            ")"
+        ).join(", ")}
+
+        </div>
+
+        `;
 
     }
+
 }
 
 
-/* ==========================================
+/* ==================================================
    REPORTS
-========================================== */
+================================================== */
 
 function updateReports(){
 
     let totalSales =
     sales.reduce(
-        (sum,s)=>sum+Number(s.total),
+        (sum,s)=>
+        sum+Number(s.total),
         0
     );
 
 
     let totalProfit =
     sales.reduce(
-        (sum,s)=>sum+Number(s.profit),
+        (sum,s)=>
+        sum+Number(s.profit),
         0
     );
 
 
     let totalStock =
     products.reduce(
-        (sum,p)=>sum+Number(p.qty),
+        (sum,p)=>
+        sum+Number(p.qty),
         0
     );
 
 
-    document.getElementById("reportFarmers")
-    .innerText=farmers.length;
+    document
+    .getElementById("reportFarmers")
+    .innerText =
+    farmers.length;
 
 
-    document.getElementById("reportProducts")
-    .innerText=products.length;
+    document
+    .getElementById("reportProducts")
+    .innerText =
+    products.length;
 
 
-    document.getElementById("reportSales")
-    .innerText=totalSales.toFixed(2);
+    document
+    .getElementById("reportSales")
+    .innerText =
+    totalSales.toFixed(2);
 
 
-    document.getElementById("reportProfit")
-    .innerText=totalProfit.toFixed(2);
+    document
+    .getElementById("reportProfit")
+    .innerText =
+    totalProfit.toFixed(2);
 
 
-    document.getElementById("summaryFarmers")
-    .innerText=farmers.length;
+    document
+    .getElementById("summaryFarmers")
+    .innerText =
+    farmers.length;
 
 
-    document.getElementById("summaryProducts")
-    .innerText=products.length;
+    document
+    .getElementById("summaryProducts")
+    .innerText =
+    products.length;
 
 
-    document.getElementById("summaryStock")
-    .innerText=totalStock;
+    document
+    .getElementById("summaryStock")
+    .innerText =
+    totalStock;
 
 
-    document.getElementById("summarySales")
-    .innerText=totalSales.toFixed(2);
+    document
+    .getElementById("summarySales")
+    .innerText =
+    totalSales.toFixed(2);
 
 
-    document.getElementById("summaryProfit")
-    .innerText=totalProfit.toFixed(2);
+    document
+    .getElementById("summaryProfit")
+    .innerText =
+    totalProfit.toFixed(2);
+
 }
 
 
-/* ==========================================
+/* ==================================================
    RESET
-========================================== */
+================================================== */
 
 function resetAllData(){
 
-    if(
-        !confirm(
-            "⚠️ सर्व Farmers, Products, Stock, Sales आणि Suppliers delete होतील.\n\nContinue?"
-        )
-    )
-    return;
+    if(!confirm(
+
+        "⚠️ सर्व Farmers, Products, Stock, Sales आणि Suppliers delete होतील.\n\nContinue?"
+
+    ))
+        return;
 
 
-    localStorage.removeItem("ksk_farmers");
-    localStorage.removeItem("ksk_products");
-    localStorage.removeItem("ksk_suppliers");
-    localStorage.removeItem("ksk_sales");
+    localStorage.removeItem(
+        "ksk_farmers"
+    );
+
+    localStorage.removeItem(
+        "ksk_products"
+    );
+
+    localStorage.removeItem(
+        "ksk_suppliers"
+    );
+
+    localStorage.removeItem(
+        "ksk_sales"
+    );
 
 
     farmers=[];
+
     products=[];
+
     suppliers=[];
+
     sales=[];
+
+    saleCart=[];
 
 
     clearFarmerForm();
@@ -2839,21 +4215,25 @@ function resetAllData(){
     clearProductForm();
 
 
-    document.getElementById("billDetails")
-    .innerHTML=
+    document
+    .getElementById("billDetails")
+    .innerHTML =
     "<p>Sale केल्यानंतर Bill येथे दिसेल.</p>";
 
 
     updateAll();
 
 
-    alert("सर्व data reset झाला.");
+    alert(
+        "सर्व data reset झाला."
+    );
+
 }
 
 
-/* ==========================================
+/* ==================================================
    UPDATE ALL
-========================================== */
+================================================== */
 
 function updateAll(){
 
@@ -2871,19 +4251,24 @@ function updateAll(){
 
     loadSaleOptions();
 
+    displaySaleCart();
+
     updateDashboard();
 
     updateReports();
+
 }
 
 
-/* ==========================================
-   START SYSTEM
-========================================== */
+/* ==================================================
+   START
+================================================== */
 
 updateAll();
 
 </script>
 
+
 </body>
+
 </html>
